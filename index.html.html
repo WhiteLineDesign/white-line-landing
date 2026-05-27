@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>White Line Design — Brand OS for Small Business</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: #080808; color: #f0ede6; overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 48px; border-bottom: 1px solid #fff;
+      position: sticky; top: 0; background: #080808ee;
+      backdrop-filter: blur(8px); z-index: 100;
+    }
+    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.12em; color: #fff; text-decoration: none; }
+    .nav-right { display: flex; gap: 28px; align-items: center; list-style: none; }
+    .nav-right a { font-size: 15px; letter-spacing: 0.12em; text-transform: uppercase; color: #aaa; text-decoration: none; transition: color 0.2s; }
+    .nav-right a:hover { color: #fff; }
+    .nav-cta { background: #fff !important; color: #080808 !important; padding: 8px 20px; font-weight: 500 !important; }
+
+    /* ── SHARED ── */
+    .section { padding: 72px 48px; border-bottom: 1px solid #1c1c1c; position: relative; }
+    .section-label { font-size: 15px; letter-spacing: 0.26em; text-transform: uppercase; color: #666; margin-bottom: 32px; display: flex; align-items: center; gap: 12px; }
+    .section-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: #fff; opacity: 0.2; }
+    .section-h2 { font-family: 'Bebas Neue', sans-serif; font-size: 40px; color: #fff; margin-bottom: 8px; line-height: 1; }
+    .section-h2 .accent { color: #c8b97a; }
+    .section-sub { font-size: 15px; color: #999; font-weight: 300; margin-bottom: 32px; line-height: 1.75; max-width: 500px; }
+    .btn-primary { display: inline-block; background: #fff; color: #080808; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 14px 28px; border: none; cursor: pointer; border-radius: 0; margin-right: 10px; margin-bottom: 10px; text-decoration: none; transition: opacity 0.2s; }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-ghost { display: inline-block; background: transparent; color: #fff; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; padding: 13px 28px; border: 1px solid #333; cursor: pointer; border-radius: 0; margin-bottom: 10px; text-decoration: none; transition: border-color 0.2s; }
+    .btn-ghost:hover { border-color: #bbb; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 80px 48px 88px; position: relative; border-bottom: 1px solid #fff; min-height: 520px;
+      display: flex; flex-direction: column; justify-content: center; overflow: hidden;
+    }
+    .hero-bg { position: absolute; inset: 0; pointer-events: none; }
+    .hero-eyebrow { font-size: 14px; letter-spacing: 0.24em; text-transform: uppercase; color: #444; margin-bottom: 22px; }
+    .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px, 9vw, 100px); line-height: 0.92; color: #fff; margin-bottom: 24px; }
+    .hero h1 .accent { color: #c8b97a; }
+    .hero-sub { font-size: 15px; color: #aaa; font-weight: 300; max-width: 440px; line-height: 1.75; margin-bottom: 40px; font-style: italic; }
+    .hero-sub strong { font-style: normal; font-weight: 400; color: #ccc; }
+    .hero-corner { position: absolute; right: 48px; top: 80px; bottom: 88px; display: flex; flex-direction: column; justify-content: center; align-items: flex-end; gap: 20px; }
+    .corner-rule { width: 1px; height: 60px; background: #fff; opacity: 0.1; margin: 0 auto; }
+    .corner-stat .num { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: #fff; line-height: 1; text-align: right; }
+    .corner-stat .lbl { font-size: 15px; color: #ccc; letter-spacing: 0.16em; text-transform: uppercase; text-align: right; margin-top: 4px; line-height: 1.6; }
+
+    /* ── HOW IT WORKS ── */
+    .how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0; border: 1px solid #1c1c1c; }
+    .how-step { padding: 30px 26px; border-right: 1px solid #1c1c1c; }
+    .how-step:last-child { border-right: none; }
+    .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 0.2em; color: #777; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+    .step-num::after { content: ''; flex: 1; height: 1px; background: #fff; opacity: 0.05; }
+    .step-title { font-size: 14px; font-weight: 500; color: #ccc; margin-bottom: 8px; }
+    .step-desc { font-size: 15px; color: #ccc; line-height: 1.75; font-weight: 300; }
+
+    /* ── VAULT ── */
+    .vault-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; border: 1px solid #1c1c1c; }
+    .vault-feat { padding: 28px 24px; border-right: 1px solid #1c1c1c; }
+    .vault-feat:last-child { border-right: none; }
+    .vault-feat-icon { font-size: 18px; color: #fff; opacity: 0.25; margin-bottom: 14px; }
+    .vault-feat-title { font-size: 14px; font-weight: 500; color: #ccc; margin-bottom: 6px; }
+    .vault-feat-desc { font-size: 15px; color: #999; line-height: 1.75; font-weight: 300; }
+
+    /* ── PRICING ── */
+    .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; border: 1px solid #1c1c1c; }
+    .plan-card { padding: 30px 24px; border-right: 1px solid #1c1c1c; position: relative; }
+    .plan-card:last-child { border-right: none; }
+    .plan-card.featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: #fff; opacity: 0.15; }
+    .plan-badge { font-size: 15px; letter-spacing: 0.2em; text-transform: uppercase; color: #bbb; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .plan-badge::before { content: ''; width: 16px; height: 1px; background: #fff; opacity: 0.2; }
+    .plan-name { font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: #aaa; margin-bottom: 12px; }
+    .plan-price { font-family: 'Bebas Neue', sans-serif; font-size: 50px; color: #fff; line-height: 1; }
+    .plan-price span { font-family: 'DM Sans', sans-serif; font-size: 15px; color: #888; font-weight: 300; } font-weight: 300; }
+    .plan-divider { height: 1px; background: #141414; margin: 18px 0; }
+    .plan-feature { font-size: 15px; color: #777; margin-bottom: 9px; display: flex; align-items: flex-start; gap: 8px; font-weight: 300; line-height: 1.5; }
+    .plan-feature::before { content: '—'; color: #aaa; flex-shrink: 0; font-size: 14px; margin-top: 1px; }
+    .plan-feature.on { color: #ddd; }
+    .plan-feature.on::before { color: #ffffff33; }
+
+    /* ── NICHE ── */
+    .niche-tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .niche-tag { border: 1px solid #1a1a1a; color: #777; font-size: 14px; padding: 6px 14px; letter-spacing: 0.08em; }
+    .niche-tag.active { border-color: #777; color: #bbb; }
+    .niche-tag.launch { border-color: #ffffff18; color: #c8b97a; }
+    .niche-tag.music { border-color: #c8b97a33; color: #c8b97a; background: #c8b97a08; position: relative; }
+    .niche-tag.music::before { content: 'NEW'; position: absolute; top: -7px; left: 50%; transform: translateX(-50%); font-size: 7px; letter-spacing: 0.2em; color: #c8b97a; opacity: 0.6; }
+    .niche-note { font-size: 15px; color: #aaa; letter-spacing: 0.06em; }
+    .niche-note span { color: #777; }
+
+    /* ── MUSIC SECTION ── */
+    .music-section { padding: 72px 48px; position: relative; overflow: hidden; border-top: 1px solid #fff; border-bottom: 1px solid #fff; }
+    .music-bg { position: absolute; inset: 0; pointer-events: none; }
+    .music-top { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid #1c1c1c; }
+    .music-left { padding: 40px 36px; border-right: 1px solid #1c1c1c; }
+    .music-eyebrow { font-size: 15px; letter-spacing: 0.22em; text-transform: uppercase; color: #c8b97a; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .music-eyebrow::after { content: ''; flex: 1; height: 1px; background: #c8b97a; opacity: 0.2; }
+    .music-h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(38px, 5.5vw, 56px); color: #fff; line-height: 0.92; margin-bottom: 20px; }
+    .music-h2 .accent { color: #c8b97a; }
+    .music-body { font-size: 15px; color: #888; font-weight: 300; line-height: 1.85; margin-bottom: 32px; font-style: italic; }
+    .music-body strong { font-style: normal; font-weight: 400; color: #777; }
+    .music-right { padding: 0; }
+    .pain-item { padding: 24px 28px; border-bottom: 1px solid #111; display: flex; gap: 16px; align-items: flex-start; }
+    .pain-item:last-child { border-bottom: none; }
+    .pain-num { font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 0.16em; color: #aaa; flex-shrink: 0; padding-top: 3px; }
+    .pain-title { font-size: 14px; font-weight: 500; color: #bbb; margin-bottom: 5px; }
+    .pain-desc { font-size: 15px; color: #999; font-weight: 300; line-height: 1.75; }
+    .music-stat-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; border: 1px solid #1c1c1c; border-top: none; }
+    .music-stat { padding: 24px 20px; border-right: 1px solid #1c1c1c; text-align: center; }
+    .music-stat:last-child { border-right: none; }
+    .mstat-num { font-family: 'Bebas Neue', sans-serif; font-size: 38px; color: #fff; line-height: 1; }
+    .mstat-rule { width: 20px; height: 1px; background: #fff; opacity: 0.08; margin: 8px auto; }
+    .mstat-lbl { font-size: 15px; color: #777; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.6; }
+    .quote-strip { border: 1px solid #1c1c1c; border-top: none; padding: 28px 36px; display: flex; align-items: flex-start; gap: 20px; }
+    .quote-vline { width: 1px; background: #ffffff14; align-self: stretch; flex-shrink: 0; }
+    .quote-text { font-size: 15px; color: #ccc; font-weight: 300; font-style: italic; line-height: 1.75; }
+    .quote-text strong { color: #c8b97a; font-style: normal; font-weight: 400; }
+    .quote-attr { font-size: 15px; color: #aaa; letter-spacing: 0.14em; text-transform: uppercase; margin-top: 10px; display: flex; align-items: center; gap: 8px; }
+    .quote-attr::before { content: ''; display: inline-block; width: 16px; height: 1px; background: #ffffff14; }
+
+    /* ── CTA ── */
+    .cta-section { padding: 96px 48px; text-align: center; border-bottom: 1px solid #1c1c1c; position: relative; overflow: hidden; }
+    .cta-bg { position: absolute; inset: 0; pointer-events: none; }
+    .cta-eyebrow { font-size: 15px; letter-spacing: 0.24em; text-transform: uppercase; color: #777; margin-bottom: 28px; display: flex; align-items: center; justify-content: center; gap: 12px; }
+    .cta-eyebrow::before, .cta-eyebrow::after { content: ''; display: inline-block; width: 40px; height: 1px; background: #fff; opacity: 0.08; }
+    .cta-section h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(44px, 7vw, 72px); color: #fff; line-height: 0.93; margin-bottom: 18px; }
+    .cta-section h2 .accent { color: #c8b97a; }
+    .cta-sub { font-size: 15px; color: #ccc; margin-bottom: 40px; font-weight: 300; line-height: 1.75; }
+    .cta-sub strong { color: #c8b97a; font-weight: 400; }
+    .waitlist-wrap { display: flex; gap: 8px; max-width: 460px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+    .waitlist-input { flex: 1; min-width: 220px; background: #0e0e0e; border: 1px solid #1e1e1e; color: #f0ede6; font-family: 'DM Sans', sans-serif; font-size: 15px; padding: 13px 16px; border-radius: 0; outline: none; transition: border-color 0.2s; }
+    .waitlist-input:focus { border-color: #ccc; }
+    .waitlist-input::placeholder { color: #252525; }
+    .success-msg { display: none; font-size: 15px; color: #c8b97a; letter-spacing: 0.1em; margin-top: 16px; }
+
+    /* ── FOOTER ── */
+    footer { padding: 22px 48px; border-top: 1px solid #fff; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.14em; color: #aaa; }
+    .footer-links { display: flex; gap: 20px; list-style: none; }
+    .footer-links a { font-size: 14px; color: #aaa; text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+    .footer-links a:hover { color: #444; }
+    .footer-note { font-size: 14px; color: #aaa; letter-spacing: 0.04em; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 680px) {
+      nav { padding: 16px 24px; }
+      .nav-right li:not(:last-child) { display: none; }
+      .hero { padding: 56px 24px 64px; min-height: auto; }
+      .hero-corner { display: none; }
+      .section { padding: 48px 24px; }
+      .music-section { padding: 48px 24px; }
+      .music-top { grid-template-columns: 1fr; }
+      .music-left { border-right: none; border-bottom: 1px solid #1c1c1c; }
+      .music-stat-row { grid-template-columns: 1fr; }
+      .music-stat { border-right: none; border-bottom: 1px solid #1c1c1c; }
+      .cta-section { padding: 64px 24px; }
+      footer { padding: 20px 24px; }
+      .how-grid { grid-template-columns: 1fr 1fr; }
+      .how-step { border-bottom: 1px solid #1c1c1c; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">WHITE LINE</a>
+    <ul class="nav-right">
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#vault">Brand Vault</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#waitlist" class="nav-cta">Join Waitlist</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <svg viewBox="0 0 800 520" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="130" x2="800" y2="130" stroke="white" stroke-width="0.5" opacity="0.03"/>
+        <line x1="0" y1="260" x2="800" y2="260" stroke="white" stroke-width="0.5" opacity="0.025"/>
+        <line x1="0" y1="390" x2="800" y2="390" stroke="white" stroke-width="0.5" opacity="0.025"/>
+        <line x1="580" y1="0" x2="580" y2="520" stroke="white" stroke-width="0.5" opacity="0.04"/>
+        <line x1="660" y1="0" x2="660" y2="520" stroke="white" stroke-width="1" opacity="0.06"/>
+        <line x1="672" y1="0" x2="672" y2="520" stroke="white" stroke-width="0.5" opacity="0.025"/>
+        <circle cx="660" cy="260" r="150" fill="none" stroke="white" stroke-width="0.5" opacity="0.04"/>
+        <circle cx="660" cy="260" r="90" fill="none" stroke="white" stroke-width="0.5" opacity="0.03"/>
+        <circle cx="660" cy="260" r="40" fill="none" stroke="white" stroke-width="0.5" opacity="0.035"/>
+        <line x1="510" y1="260" x2="800" y2="260" stroke="white" stroke-width="0.5" opacity="0.03"/>
+        <line x1="660" y1="110" x2="660" y2="410" stroke="white" stroke-width="0.5" opacity="0.03"/>
+      </svg>
+    </div>
+    <div style="position:relative;">
+      <div class="hero-eyebrow">Brand OS for Small Business</div>
+      <h1>YOUR BRAND.<br><span class="accent">ONE PLACE.</span><br>EVERYWHERE.</h1>
+      <p class="hero-sub">Generate your identity with AI. Store every asset in your <strong>Brand Vault.</strong> Deploy to products, print, and marketing — in minutes.</p>
+      <div>
+        <a href="#waitlist" class="btn-primary">Join the Waitlist</a>
+        <a href="#how" class="btn-ghost">See How It Works</a>
+      </div>
+    </div>
+    <div class="hero-corner">
+      <div class="corner-rule"></div>
+      <div class="corner-stat">
+        <div class="num">5M+</div>
+        <div class="lbl">Sellers without<br>a real brand</div>
+      </div>
+      <div class="corner-rule"></div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how">
+    <div class="section-label">How it works</div>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="step-num">01</div>
+        <div class="step-title">Describe your brand</div>
+        <div class="step-desc">Enter your business name, vibe, and any inspiration. Our AI generates a complete identity in seconds.</div>
+      </div>
+      <div class="how-step">
+        <div class="step-num">02</div>
+        <div class="step-title">Brand Vault created</div>
+        <div class="step-desc">Logo files, hex codes, fonts, and a shareable style guide — organized and stored automatically.</div>
+      </div>
+      <div class="how-step">
+        <div class="step-num">03</div>
+        <div class="step-title">Deploy to any product</div>
+        <div class="step-desc">Apply your brand to t-shirts, stickers, cards, and more. One click — shipped to your door.</div>
+      </div>
+      <div class="how-step">
+        <div class="step-num">04</div>
+        <div class="step-title">Stay consistent forever</div>
+        <div class="step-desc">Every future asset pulls from your Brand Vault. No more hunting for the right logo file.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND VAULT -->
+  <section class="section" id="vault">
+    <div class="section-label">Brand Vault</div>
+    <div class="section-h2">YOUR ASSETS.<br><span class="accent">ALWAYS READY.</span></div>
+    <p class="section-sub">One source of truth for every file, color, and font. Stop emailing yourself logos and losing hex codes in old Slack threads.</p>
+    <div class="vault-grid">
+      <div class="vault-feat">
+        <div class="vault-feat-icon"><i class="ti ti-archive"></i></div>
+        <div class="vault-feat-title">Every file format</div>
+        <div class="vault-feat-desc">SVG, PNG, PDF — auto-generated and ready to send to any printer, platform, or freelancer.</div>
+      </div>
+      <div class="vault-feat">
+        <div class="vault-feat-icon"><i class="ti ti-palette"></i></div>
+        <div class="vault-feat-title">Style guide</div>
+        <div class="vault-feat-desc">Auto-generated brand guide with a shareable link — hand it to any freelancer instantly.</div>
+      </div>
+      <div class="vault-feat">
+        <div class="vault-feat-icon"><i class="ti ti-history"></i></div>
+        <div class="vault-feat-title">Version history</div>
+        <div class="vault-feat-desc">Track every logo version. Roll back, branch, or evolve your brand over time.</div>
+      </div>
+      <div class="vault-feat">
+        <div class="vault-feat-icon"><i class="ti ti-users"></i></div>
+        <div class="vault-feat-title">Team access</div>
+        <div class="vault-feat-desc">Share with your VA or social manager — no more emailing files back and forth.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section" id="pricing">
+    <div class="section-label">Pricing</div>
+    <div class="section-h2">FLAT RATE.<br><span class="accent">NO SURPRISES.</span></div>
+    <p class="section-sub">Cancel anytime. No contracts.</p>
+    <div class="plans-grid">
+      <div class="plan-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">$19<span> /mo</span></div>
+        <div class="plan-divider"></div>
+        <div class="plan-feature on">AI logo generation</div>
+        <div class="plan-feature on">1 Brand Vault</div>
+        <div class="plan-feature on">All file formats</div>
+        <div class="plan-feature on">Basic style guide</div>
+        <div class="plan-feature">Merch orders</div>
+        <div class="plan-feature">Version history</div>
+      </div>
+      <div class="plan-card featured">
+        <div class="plan-badge">Most popular</div>
+        <div class="plan-name">Builder</div>
+        <div class="plan-price">$49<span> /mo</span></div>
+        <div class="plan-divider"></div>
+        <div class="plan-feature on">Everything in Starter</div>
+        <div class="plan-feature on">Unlimited brand assets</div>
+        <div class="plan-feature on">1 merch order/month</div>
+        <div class="plan-feature on">Shareable style guide</div>
+        <div class="plan-feature on">Version history</div>
+        <div class="plan-feature">Team access</div>
+      </div>
+      <div class="plan-card">
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">$99<span> /mo</span></div>
+        <div class="plan-divider"></div>
+        <div class="plan-feature on">Everything in Builder</div>
+        <div class="plan-feature on">Multiple brand profiles</div>
+        <div class="plan-feature on">Team access (5 seats)</div>
+        <div class="plan-feature on">Priority design support</div>
+        <div class="plan-feature on">API access</div>
+        <div class="plan-feature on">White-label guide</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NICHE -->
+  <section class="section">
+    <div class="section-label">Built for</div>
+    <div class="section-h2">YOUR <span class="accent">NICHE.</span></div>
+    <p class="section-sub">Built for independent sellers, creators, and artists — not enterprise teams with a design department.</p>
+    <div class="niche-tag-row">
+      <div class="niche-tag launch">Etsy sellers</div>
+      <div class="niche-tag launch">Shopify stores</div>
+      <div class="niche-tag music">Independent bands</div>
+      <div class="niche-tag music">DJs &amp; producers</div>
+      <div class="niche-tag active">Food trucks</div>
+      <div class="niche-tag active">Pop-up markets</div>
+      <div class="niche-tag active">Fitness coaches</div>
+      <div class="niche-tag active">Real estate agents</div>
+      <div class="niche-tag active">Local cafés</div>
+      <div class="niche-tag active">Creative studios</div>
+      <div class="niche-tag active">Podcasters</div>
+    </div>
+    <p class="niche-note">Launching with Etsy + Shopify sellers — 5M+ active US stores. <span>Music &amp; creator verticals coming soon.</span></p>
+  </section>
+
+  <!-- MUSIC SECTION -->
+  <section class="music-section">
+    <div class="music-bg">
+      <svg viewBox="0 0 800 640" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="686" cy="320" r="180" fill="none" stroke="white" stroke-width="0.5" opacity="0.03"/>
+        <circle cx="686" cy="320" r="110" fill="none" stroke="white" stroke-width="0.5" opacity="0.025"/>
+        <circle cx="686" cy="320" r="50" fill="none" stroke="white" stroke-width="0.5" opacity="0.03"/>
+        <line x1="506" y1="320" x2="800" y2="320" stroke="white" stroke-width="0.5" opacity="0.025"/>
+        <line x1="686" y1="140" x2="686" y2="500" stroke="white" stroke-width="0.5" opacity="0.025"/>
+      </svg>
+    </div>
+    <div style="position:relative;">
+      <div class="section-label">For musicians &amp; artists</div>
+      <div class="music-top">
+        <div class="music-left">
+          <div class="music-eyebrow">New vertical</div>
+          <div class="music-h2">YOUR BAND.<br>A REAL <span class="accent">BRAND.</span></div>
+          <p class="music-body">Independent artists pour everything into their sound — then hand out a <strong>blurry PNG someone made in 2019.</strong> White Line gives your band a living brand identity that travels from Spotify to the merch table without losing a pixel.</p>
+          <div>
+            <a href="#waitlist" class="btn-primary">Get early access</a>
+            <a href="#how" class="btn-ghost">See how it works</a>
+          </div>
+        </div>
+        <div class="music-right">
+          <div class="pain-item">
+            <div class="pain-num">01</div>
+            <div>
+              <div class="pain-title">The logo lives on one person's laptop</div>
+              <div class="pain-desc">Every merch drop, poster, or press kit starts with "hey who has the logo?" White Line ends that conversation.</div>
+            </div>
+          </div>
+          <div class="pain-item">
+            <div class="pain-num">02</div>
+            <div>
+              <div class="pain-title">Merch takes weeks and a minimum order</div>
+              <div class="pain-desc">No MOQ. No turnaround drama. Apply your brand to tees, stickers, and posters — one at a time if you need.</div>
+            </div>
+          </div>
+          <div class="pain-item">
+            <div class="pain-num">03</div>
+            <div>
+              <div class="pain-title">Every platform looks completely different</div>
+              <div class="pain-desc">Your Brand Vault exports to Spotify canvas, Instagram, press kit, and print — consistent, every time.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="music-stat-row">
+        <div class="music-stat">
+          <div class="mstat-num">4M+</div>
+          <div class="mstat-rule"></div>
+          <div class="mstat-lbl">Independent artists<br>on Spotify alone</div>
+        </div>
+        <div class="music-stat">
+          <div class="mstat-num">$1.5B</div>
+          <div class="mstat-rule"></div>
+          <div class="mstat-lbl">Indie merch market<br>annually</div>
+        </div>
+        <div class="music-stat">
+          <div class="mstat-num">$0</div>
+          <div class="mstat-rule"></div>
+          <div class="mstat-lbl">Budget for a<br>designer on retainer</div>
+        </div>
+      </div>
+      <div class="quote-strip">
+        <div class="quote-vline"></div>
+        <div>
+          <div class="quote-text">The target customer is every band that ever played a show and thought — <strong>we really need to get our merch together.</strong></div>
+          <div class="quote-attr">White Line Design positioning</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / WAITLIST -->
+  <section class="cta-section" id="waitlist">
+    <div class="cta-bg">
+      <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="400" cy="200" r="160" fill="none" stroke="white" stroke-width="0.5" opacity="0.03"/>
+        <circle cx="400" cy="200" r="220" fill="none" stroke="white" stroke-width="0.5" opacity="0.02"/>
+        <line x1="0" y1="200" x2="800" y2="200" stroke="white" stroke-width="0.5" opacity="0.025"/>
+        <line x1="400" y1="0" x2="400" y2="400" stroke="white" stroke-width="0.5" opacity="0.025"/>
+        <line x1="160" y1="0" x2="640" y2="400" stroke="white" stroke-width="0.5" opacity="0.02"/>
+        <line x1="640" y1="0" x2="160" y2="400" stroke="white" stroke-width="0.5" opacity="0.02"/>
+      </svg>
+    </div>
+    <div style="position:relative;">
+      <div class="cta-eyebrow">Early Access</div>
+      <h2>READY TO OWN<br>YOUR <span class="accent">BRAND?</span></h2>
+      <p class="cta-sub">Get early access perks and free trial.<br>No credit card required.</p>
+      <div class="waitlist-wrap">
+        <input class="waitlist-input" type="email" placeholder="your@email.com" id="wl-email" />
+        <button class="btn-primary" id="wl-btn">Reserve my spot</button>
+      </div>
+      <p class="success-msg" id="wl-success">— You're on the list. We'll be in touch.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">White Line Design</div>
+    <ul class="footer-links">
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Terms</a></li>
+      <li><a href="https://whitelinedesign.ai">whitelinedesign.ai</a></li>
+      <li><a href="mailto:info@whitelinedesign.ai">Contact</a></li>
+    </ul>
+    <div class="footer-note">© 2026 White Line Design LLC</div>
+  </footer>
+
+  <script>
+    // ── Waitlist form ──────────────────────────────────────────────
+    // Option A (Mailchimp): Replace MAILCHIMP_URL with your form action URL
+    //   from Mailchimp → Audience → Signup forms → Embedded forms → copy the action= URL
+    // Option B (no service yet): emails show a success message only — swap in real URL later
+    var MAILCHIMP_URL = ''; // paste your Mailchimp action URL here when ready
+
+    document.getElementById('wl-btn').addEventListener('click', function () {
+      var emailEl = document.getElementById('wl-email');
+      var email   = emailEl.value.trim();
+
+      if (!email || !email.includes('@')) {
+        emailEl.focus();
+        emailEl.style.borderColor = '#555';
+        return;
+      }
+
+      var btn = this;
+      btn.disabled = true;
+      btn.textContent = 'Adding you…';
+      btn.style.opacity = '0.7';
+
+      if (MAILCHIMP_URL) {
+        // Real Mailchimp submission
+        var form = document.createElement('form');
+        form.action  = MAILCHIMP_URL;
+        form.method  = 'POST';
+        form.target  = '_blank'; // opens in new tab so user stays on page
+        form.style.display = 'none';
+        var input = document.createElement('input');
+        input.type  = 'hidden';
+        input.name  = 'EMAIL';
+        input.value = email;
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
+        document.body.removeChild(form);
+      } else {
+        // No service connected yet — just show success
+        // Replace this block with your preferred service (ConvertKit, Resend, etc.)
+        console.log('Waitlist signup:', email);
+      }
+
+      // Show success regardless
+      emailEl.value       = '';
+      emailEl.placeholder = 'your@email.com';
+      emailEl.style.borderColor = '#c8b97a22';
+      document.getElementById('wl-success').style.display = 'block';
+      btn.textContent = 'You\'re in ✓';
+      btn.style.opacity = '0.4';
+    });
+
+    // Allow Enter key to submit
+    document.getElementById('wl-email').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') document.getElementById('wl-btn').click();
+    });
+  </script>
+
+</body>
+</html>

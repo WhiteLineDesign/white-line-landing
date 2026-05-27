@@ -449,11 +449,21 @@
   </footer>
 
   <script>
-    // ── Waitlist form ──────────────────────────────────────────────
-    // Option A (Mailchimp): Replace MAILCHIMP_URL with your form action URL
-    //   from Mailchimp → Audience → Signup forms → Embedded forms → copy the action= URL
-    // Option B (no service yet): emails show a success message only — swap in real URL later
-    var MAILCHIMP_URL = ''; // paste your Mailchimp action URL here when ready
+    // ── Waitlist form — Mailchimp JSONP submission (no popup needed) ──
+    var MAILCHIMP_URL = 'https://whitelinedesign.us4.list-manage.com/subscribe/post?u=3d9a7ea957cf25aa0698f7510&id=7614aa4012&f_id=00d71deaf0';
+
+    function submitToMailchimp(email, callback) {
+      // Convert URL to JSONP endpoint
+      var url = MAILCHIMP_URL.replace('/post?', '/post-json?') + '&EMAIL=' + encodeURIComponent(email) + '&c=mailchimpCallback';
+      window.mailchimpCallback = function(data) {
+        callback(data.result, data.msg);
+        delete window.mailchimpCallback;
+      };
+      var script = document.createElement('script');
+      script.src = url;
+      document.body.appendChild(script);
+      document.body.removeChild(script);
+    }
 
     document.getElementById('wl-btn').addEventListener('click', function () {
       var emailEl = document.getElementById('wl-email');
@@ -470,34 +480,23 @@
       btn.textContent = 'Adding you…';
       btn.style.opacity = '0.7';
 
-      if (MAILCHIMP_URL) {
-        // Real Mailchimp submission
-        var form = document.createElement('form');
-        form.action  = MAILCHIMP_URL;
-        form.method  = 'POST';
-        form.target  = '_blank'; // opens in new tab so user stays on page
-        form.style.display = 'none';
-        var input = document.createElement('input');
-        input.type  = 'hidden';
-        input.name  = 'EMAIL';
-        input.value = email;
-        form.appendChild(input);
-        document.body.appendChild(form);
-        form.submit();
-        document.body.removeChild(form);
-      } else {
-        // No service connected yet — just show success
-        // Replace this block with your preferred service (ConvertKit, Resend, etc.)
-        console.log('Waitlist signup:', email);
-      }
+      submitToMailchimp(email, function(result, msg) {
+        emailEl.value = '';
+        emailEl.placeholder = 'your@email.com';
+        emailEl.style.borderColor = '#c8b97a22';
+        document.getElementById('wl-success').style.display = 'block';
+        btn.textContent = 'You\'re in ✓';
+        btn.style.opacity = '0.4';
+      });
 
-      // Show success regardless
-      emailEl.value       = '';
-      emailEl.placeholder = 'your@email.com';
-      emailEl.style.borderColor = '#c8b97a22';
-      document.getElementById('wl-success').style.display = 'block';
-      btn.textContent = 'You\'re in ✓';
-      btn.style.opacity = '0.4';
+      // Show success immediately — JSONP is fire and forget
+      setTimeout(function() {
+        emailEl.value = '';
+        emailEl.style.borderColor = '#c8b97a22';
+        document.getElementById('wl-success').style.display = 'block';
+        btn.textContent = 'You\'re in ✓';
+        btn.style.opacity = '0.4';
+      }, 800);
     });
 
     // Allow Enter key to submit

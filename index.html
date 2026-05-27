@@ -449,60 +449,48 @@
   </footer>
 
   <script>
-    // ── Waitlist form — Mailchimp JSONP submission (no popup needed) ──
-    var MAILCHIMP_URL = 'https://whitelinedesign.us4.list-manage.com/subscribe/post?u=3d9a7ea957cf25aa0698f7510&id=7614aa4012&f_id=00d71deaf0';
+    <script>
+  document.getElementById('wl-btn').addEventListener('click', function () {
+    var emailEl = document.getElementById('wl-email');
+    var email = emailEl.value.trim();
 
-    function submitToMailchimp(email, callback) {
-      // Convert URL to JSONP endpoint
-      var url = MAILCHIMP_URL.replace('/post?', '/post-json?') + '&EMAIL=' + encodeURIComponent(email) + '&c=mailchimpCallback';
-      window.mailchimpCallback = function(data) {
-        callback(data.result, data.msg);
-        delete window.mailchimpCallback;
-      };
-      var script = document.createElement('script');
-      script.src = url;
-      document.body.appendChild(script);
-      document.body.removeChild(script);
+    if (!email || !email.includes('@')) {
+      emailEl.focus();
+      emailEl.style.borderColor = '#555';
+      return;
     }
 
-    document.getElementById('wl-btn').addEventListener('click', function () {
-      var emailEl = document.getElementById('wl-email');
-      var email   = emailEl.value.trim();
+    var btn = this;
+    btn.disabled = true;
+    btn.textContent = 'Adding you…';
+    btn.style.opacity = '0.7';
 
-      if (!email || !email.includes('@')) {
-        emailEl.focus();
-        emailEl.style.borderColor = '#555';
-        return;
-      }
+    // JSONP submission to Mailchimp
+    var callbackName = 'mc_' + Date.now();
+    var url = 'https://whitelinedesign.us4.list-manage.com/subscribe/post-json?u=3d9a7ea957cf25aa0698f7510&id=7614aa4012&f_id=00d71deaf0&EMAIL=' + encodeURIComponent(email) + '&c=' + callbackName;
 
-      var btn = this;
-      btn.disabled = true;
-      btn.textContent = 'Adding you…';
-      btn.style.opacity = '0.7';
+    window[callbackName] = function(data) {
+      delete window[callbackName];
+    };
 
-      submitToMailchimp(email, function(result, msg) {
-        emailEl.value = '';
-        emailEl.placeholder = 'your@email.com';
-        emailEl.style.borderColor = '#c8b97a22';
-        document.getElementById('wl-success').style.display = 'block';
-        btn.textContent = 'You\'re in ✓';
-        btn.style.opacity = '0.4';
-      });
+    var script = document.createElement('script');
+    script.src = url;
+    document.head.appendChild(script);
 
-      // Show success immediately — JSONP is fire and forget
-      setTimeout(function() {
-        emailEl.value = '';
-        emailEl.style.borderColor = '#c8b97a22';
-        document.getElementById('wl-success').style.display = 'block';
-        btn.textContent = 'You\'re in ✓';
-        btn.style.opacity = '0.4';
-      }, 800);
-    });
+    // Show success after short delay
+    setTimeout(function() {
+      emailEl.value = '';
+      emailEl.style.borderColor = '#c8b97a22';
+      document.getElementById('wl-success').style.display = 'block';
+      btn.textContent = 'You\'re in ✓';
+      btn.style.opacity = '0.4';
+    }, 1000);
+  });
 
-    // Allow Enter key to submit
-    document.getElementById('wl-email').addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') document.getElementById('wl-btn').click();
-    });
+  document.getElementById('wl-email').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') document.getElementById('wl-btn').click();
+  });
+</script>
   </script>
 
 </body>

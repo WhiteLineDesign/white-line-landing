@@ -79,11 +79,11 @@
     .kit:hover { box-shadow: 5px 8px 0 #F6790A26, 0 18px 44px #00000080; }
 
     /* ── HERO ── */
-    .hero { position: relative; padding: 72px 40px 84px; border-bottom: 1px solid var(--ink); display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; min-height: 620px; }
-    .hero h1 { font-size: clamp(52px, 7.2vw, 96px); text-transform: uppercase; margin: 20px 0 24px; }
+    .hero { position: relative; padding: 108px 40px 120px; border-bottom: 1px solid var(--ink); display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; min-height: min(86vh, 860px); }
+    .hero h1 { font-size: clamp(52px, 7.2vw, 96px); text-transform: uppercase; margin: 20px 0 24px; text-shadow: 0 2px 30px rgba(0,0,0,0.75); }
     .hero h1 .b { color: var(--blue); }
     .hero-eyebrow { display: flex; align-items: center; gap: 10px; color: var(--mute); }
-    .hero-sub { font-size: 17px; color: var(--ink-soft); max-width: 460px; margin-bottom: 36px; }
+    .hero-sub { font-size: 17px; color: var(--ink-soft); max-width: 460px; margin-bottom: 36px; text-shadow: 0 1px 16px rgba(0,0,0,0.85); }
     .hero-sub strong { font-weight: 600; color: var(--ink); }
     .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 44px; }
     .hero-foot { display: flex; align-items: center; gap: 14px; color: var(--mute); }
@@ -166,8 +166,8 @@
     .hero-video::after {
       content: ''; position: absolute; inset: 0;
       background:
-        linear-gradient(90deg, rgba(11,10,8,0.95) 0%, rgba(11,10,8,0.78) 42%, rgba(11,10,8,0.42) 100%),
-        linear-gradient(180deg, rgba(11,10,8,0.4) 0%, rgba(11,10,8,0) 45%, rgba(11,10,8,0.94) 100%);
+        linear-gradient(90deg, rgba(11,10,8,0.62) 0%, rgba(11,10,8,0.42) 50%, rgba(11,10,8,0.28) 100%),
+        linear-gradient(180deg, rgba(11,10,8,0.45) 0%, rgba(11,10,8,0.05) 42%, rgba(11,10,8,0.92) 100%);
     }
     .hero > div { position: relative; }
 

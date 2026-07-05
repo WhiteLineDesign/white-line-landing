@@ -228,17 +228,18 @@
     .kit { background: var(--sheet); border: 1px solid var(--edge); border-radius: var(--radius); padding: 26px 24px 20px; position: relative; transition: transform 0.18s, box-shadow 0.18s; }
     .kit:hover { transform: translateY(-4px); box-shadow: 5px 8px 0 var(--blue-soft), 5px 8px 0 1px var(--line); }
     .kit-no { display: flex; justify-content: space-between; align-items: center; color: var(--mute); padding-bottom: 14px; border-bottom: 1px solid var(--line); margin-bottom: 22px; }
-    .kit-name { font-size: 30px; text-transform: uppercase; line-height: 0.95; min-height: 58px; }
+    .kit-name { font-size: 30px; text-transform: uppercase; line-height: 0.95; min-height: 58px; color: #4E4B43; }
     .kit-vibe { font-size: 13px; color: var(--mute); font-style: italic; margin: 8px 0 20px; }
-    .kit-chips { display: flex; gap: 6px; margin-bottom: 18px; }
+    .kit-chips { display: flex; gap: 6px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .kit-files { text-align: center; font-size: 11px; letter-spacing: 0.12em; color: var(--mute); margin: 12px 0 14px; }
     .kit-chips .chip { width: 38px; height: 26px; cursor: default; }
     .kit-chips .chip:hover { transform: none; }
     .kit-tags { display: flex; gap: 6px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--line); }
     .kits-note { text-align: center; color: var(--mute); margin-top: 28px; font-size: 13px; }
 
-    .kit-logo { height: 132px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; border: 1.5px dashed var(--line); border-radius: var(--radius); margin-bottom: 18px; }
+    .kit-logo { height: 196px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; border: 1.5px dashed var(--line); border-radius: var(--radius); margin-bottom: 18px; }
     .kit-logo.filled { border: 1px solid var(--line); background: var(--paper); }
-    .kit-logo img { max-height: 118px; max-width: 92%; display: block; }
+    .kit-logo img { max-height: 178px; max-width: 94%; display: block; }
     .kit-logo .logo-ghost { font-size: 40px; }
 
     /* ── VAULT ── */
@@ -448,6 +449,7 @@
             <span class="tag mono">PNG</span>
             <span class="tag mono">PDF</span>
             <span class="tag mono">EPS</span>
+            <span class="tag mono">WebP</span>
           </div>
         </div>
         <div class="spec-foot">
@@ -555,46 +557,28 @@
     <p class="sub">Three sample identities, each generated from a single sentence. Every one exports print-ready — vector files, exact hex values, a full style guide.</p>
     <div class="kits-grid">
       <div class="kit">
-        <div class="kit-no"><span class="mono">Kit No. 0031</span><span class="mono">Band</span></div>
-        <div class="kit-logo" aria-hidden="true"><div class="logo-ghost display">P</div><div class="logo-cap mono">Your logo here</div></div>
-        <div class="kit-name display" style="letter-spacing:0.04em">Paper<br>Motel</div>
-        <div class="kit-vibe">Indie rock four-piece — posters, tees, and a press kit that finally match</div>
-        <div class="kit-chips">
-          <span class="chip" style="background:#15172B"></span>
-          <span class="chip" style="background:#E8E4D6"></span>
-          <span class="chip" style="background:#F6790A"></span>
-        </div>
-        <div class="kit-tags">
-          <span class="tag mono">Gig poster</span><span class="tag mono">Tee</span><span class="tag mono">Spotify canvas</span>
-        </div>
+        <div class="kit-no"><span class="mono">Kit No. 0031</span><span class="mono">Pizza truck</span></div>
+        <div class="kit-name display">Pyramid<br>Pizza</div>
+        <div class="kit-vibe">In crust we trust — badge, box stamp, and menu board in one pass</div>
+        <div class="kit-logo filled"><img src="kit-pyramid.webp" alt="Pyramid Pizza logo — an all-seeing-eye pyramid badge reading in crust we trust" loading="lazy" /></div>
+        <div class="kit-files mono">PNG &middot; SVG &middot; PDF &middot; EPS &middot; WebP</div>
+        <div class="kit-chips"><span class="chip" style="background:#242D1C"></span><span class="chip" style="background:#902612"></span><span class="chip" style="background:#D2A36C"></span><span class="chip" style="background:#E8D5AE"></span></div>
       </div>
       <div class="kit">
         <div class="kit-no"><span class="mono">Kit No. 0018</span><span class="mono">Etsy shop</span></div>
-        <div class="kit-logo" aria-hidden="true"><div class="logo-ghost display">L</div><div class="logo-cap mono">Your logo here</div></div>
-        <div class="kit-name display" style="font-weight:600; text-transform:none">Loose<br>Thread</div>
+        <div class="kit-name display">Loose<br>Thread</div>
         <div class="kit-vibe">Hand-embroidery studio — packaging, thank-you cards, and shop banner in one pass</div>
-        <div class="kit-chips">
-          <span class="chip" style="background:#76825F"></span>
-          <span class="chip" style="background:#F3EDDF"></span>
-          <span class="chip" style="background:#B2502E"></span>
-        </div>
-        <div class="kit-tags">
-          <span class="tag mono">Sticker sheet</span><span class="tag mono">Shop banner</span><span class="tag mono">Card</span>
-        </div>
+        <div class="kit-logo filled"><img src="kit-loose-thread.webp" alt="Loose Thread logo — embroidered lettering inside a hoop wreathed in blue florals" loading="lazy" /></div>
+        <div class="kit-files mono">PNG &middot; SVG &middot; PDF &middot; EPS &middot; WebP</div>
+        <div class="kit-chips"><span class="chip" style="background:#0A0A0A"></span><span class="chip" style="background:#3D63B8"></span><span class="chip" style="background:#AAD1CF"></span><span class="chip" style="background:#B07A3F"></span></div>
       </div>
       <div class="kit">
         <div class="kit-no"><span class="mono">Kit No. 0047</span><span class="mono">Food truck</span></div>
-        <div class="kit-logo filled"><img src="kit-smoke-salt.webp" alt="Smoke &amp; Salt logo — a pig roasting on a spit in front of a Texas barbecue truck" loading="lazy" /></div>
         <div class="kit-name display">Smoke<br>&amp; Salt</div>
         <div class="kit-vibe">Texas-style barbecue truck — menu board to truck wrap in one pass</div>
-        <div class="kit-chips">
-          <span class="chip" style="background:#1B1A14"></span>
-          <span class="chip" style="background:#F6790A"></span>
-          <span class="chip" style="background:#F0E4D0"></span>
-        </div>
-        <div class="kit-tags">
-          <span class="tag mono">Menu board</span><span class="tag mono">Truck wrap</span><span class="tag mono">Cap</span>
-        </div>
+        <div class="kit-logo filled"><img src="kit-smoke-salt.webp" alt="Smoke &amp; Salt logo — a pig roasting on a spit in front of a Texas barbecue truck" loading="lazy" /></div>
+        <div class="kit-files mono">PNG &middot; SVG &middot; PDF &middot; EPS &middot; WebP</div>
+        <div class="kit-chips"><span class="chip" style="background:#1A0E08"></span><span class="chip" style="background:#82200B"></span><span class="chip" style="background:#D06A28"></span><span class="chip" style="background:#C09B7F"></span></div>
       </div>
     </div>
     <p class="kits-note mono">Sample kits shown were generated with White Line — yours takes about two minutes.</p>

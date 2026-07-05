@@ -261,25 +261,15 @@
     .plan-feature.on::before { color: var(--blue); }
     .pricing-note { text-align: center; font-size: 13px; color: var(--mute); margin-top: 26px; }
 
-    /* ── MUSIC (inverse) ── */
-    .music { background: var(--ink); color: var(--paper); padding: 88px 40px; border-bottom: 1px solid var(--edge); }
-        .music-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--edge); border-radius: var(--radius); background: var(--sheet); }
-    .music-left { padding: 42px 38px; border-right: 1px solid var(--line); }
-    .music-eyebrow { color: var(--ember); display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
-    .music-h2 { font-size: clamp(40px, 5.5vw, 60px); text-transform: uppercase; margin-bottom: 20px; color: #FFFFFF; }
-    .music-h2 .e { color: var(--blue); }
-    .music-body { font-size: 15px; color: var(--ink-soft); max-width: 420px; margin-bottom: 32px; }
-    .music-body strong { color: var(--ink); font-weight: 600; }
-    .pain { padding: 26px 30px; border-bottom: 1px solid var(--line); display: flex; gap: 18px; }
-    .pain:last-child { border-bottom: none; }
-    .pain-num { color: var(--ember); flex-shrink: 0; padding-top: 3px; }
-    .pain-title { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 16px; margin-bottom: 5px; }
-    .pain-desc { font-size: 14px; color: var(--mute); }
-    .music-stats { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--edge); border-top: none; background: var(--sheet); border-radius: 0 0 var(--radius) var(--radius); }
-    .mstat { padding: 26px 20px; border-right: 1px solid var(--line); text-align: center; }
-    .mstat:last-child { border-right: none; }
-    .mstat-num { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 42px; line-height: 1; }
-    .mstat-lbl { color: var(--mute); margin-top: 10px; line-height: 1.6; }
+    /* ── STYLE SHEET SHOWCASE ── */
+    .showcase { padding: 88px 0; border-bottom: 1px solid var(--line); overflow: hidden; }
+    .showcase-head { padding: 0 40px; }
+    .show-rows { display: flex; flex-direction: column; gap: 18px; margin-top: 10px; }
+    .show-row { display: flex; gap: 18px; width: max-content; animation: ticker 80s linear infinite; }
+    .show-row.rev { animation-direction: reverse; animation-duration: 95s; }
+    .show-row:hover { animation-play-state: paused; }
+    .show-card { height: 300px; flex-shrink: 0; border: 1px solid var(--edge); border-radius: var(--radius); overflow: hidden; background: var(--sheet); }
+    .show-card img { display: block; height: 100%; width: auto; }
 
     /* ── CTA ── */
     .cta { padding: 110px 40px; text-align: center; border-bottom: 1px solid var(--edge); position: relative; overflow: hidden; }
@@ -310,6 +300,7 @@
       .draw path, .draw circle { animation: none; stroke-dashoffset: 0; }
       .rise { animation: none; opacity: 1; transform: none; }
       .ticker-track { animation: none; }
+      .show-row { animation: none; }
       .kit, .chip { transition: none; }
     }
 
@@ -324,24 +315,21 @@
       .kits-grid { grid-template-columns: 1fr; }
       .kit-hero { grid-template-columns: 1fr; }
       .kit-price-box { border-left: none; border-top: 1px solid var(--line); padding: 24px 0 0; text-align: left; }
-      .music-grid { grid-template-columns: 1fr; }
       .vault-top { grid-template-columns: 1fr; gap: 28px; }
       .merch { aspect-ratio: auto; min-height: 540px; padding: 80px 24px; }
       .merch-bg { object-position: 70% center; }
-      .music-left { border-right: none; border-bottom: 1px solid var(--line); }
     }
     @media (max-width: 620px) {
       nav { padding: 14px 20px; }
       .nav-links li:not(:last-child) { display: none; }
       .section { padding: 56px 20px; }
-      .music { padding: 56px 20px; }
       .cta { padding: 72px 20px; }
+      .showcase { padding: 56px 0; }
+      .showcase-head { padding: 0 20px; }
+      .show-card { height: 190px; }
       footer { padding: 22px 20px; }
       .how-grid, .vault-grid { grid-template-columns: 1fr; }
       .how-step, .vault-feat { border-right: none; }
-      .music-stats { grid-template-columns: 1fr; }
-      .mstat { border-right: none; border-bottom: 1px solid var(--line); }
-      .mstat:last-child { border-bottom: none; }
       .specimen { transform: none; }
       .spec-wordmark { font-size: 26px; }
     }
@@ -570,17 +558,8 @@
       <span class="mono">Brand Vault</span>
       <span class="rule"></span>
     </div>
-    <div class="vault-top">
-      <div>
-        <h2 class="h2 display">Your assets.<br><span class="b">Always ready.</span></h2>
-        <p class="sub" style="margin-bottom:28px">One source of truth for every file, color, and font. Stop emailing yourself logos and losing hex codes in old threads.</p>
-        <a href="https://app.whitelinedesign.ai/sign-up" class="btn btn-line">Open your Vault</a>
-      </div>
-      <div class="photo-wrap">
-        <span class="cm tl"></span><span class="cm tr"></span><span class="cm bl"></span><span class="cm br"></span>
-        <img class="photo" src="vault-highway.jpg" alt="Brand Vault illustrated as a black and gold safe with a highway and white center line leading out of it" loading="lazy" />
-      </div>
-    </div>
+    <h2 class="h2 display">Your assets.<br><span class="b">Always ready.</span></h2>
+    <p class="sub">One source of truth for every file, color, and font. Stop emailing yourself logos and losing hex codes in old threads.</p>
     <div class="vault-grid">
       <div class="vault-feat">
         <div class="vault-icon" aria-hidden="true">
@@ -691,62 +670,55 @@
     <p class="pricing-note">Subscriptions include a 7-day free trial &middot; Every plan includes the AI brand assistant</p>
   </section>
 
-  <!-- MUSIC VERTICAL -->
-  <section class="music">
-    <div class="section-head">
-      <svg class="reg"><use href="#regmark"/></svg>
-      <span class="mono">For musicians &amp; artists</span>
-      <span class="rule"></span>
+  <!-- STYLE SHEET SHOWCASE -->
+  <section class="showcase" id="showcase">
+    <div class="showcase-head">
+      <div class="section-head">
+        <svg class="reg"><use href="#regmark"/></svg>
+        <span class="mono">Style sheets</span>
+        <span class="rule"></span>
+      </div>
+      <h2 class="h2 display">Full kits.<br><span class="b">Every vibe.</span></h2>
+      <p class="sub">Complete brand style sheets built with White Line — logo systems, palettes, type pairings, and real-world applications. Surf shops to streetwear to consulting firms.</p>
     </div>
-    <div class="music-grid">
-      <div class="music-left">
-        <div class="music-eyebrow mono">
-          <svg class="reg"><use href="#regmark"/></svg>
-          New vertical
-        </div>
-        <h2 class="music-h2 display">Your band.<br>A real <span class="e">brand.</span></h2>
-        <p class="music-body">Independent artists pour everything into their sound — then hand out a <strong>blurry PNG someone made in 2019.</strong> White Line gives your band a living identity that travels from Spotify to the merch table without losing a pixel.</p>
-        <div style="display:flex; gap:12px; flex-wrap:wrap">
-          <a href="https://app.whitelinedesign.ai/sign-up" class="btn btn-ink">Start free</a>
-          <a href="#how" class="btn btn-line">See how it works</a>
-        </div>
+    <div class="show-rows" aria-label="Gallery of brand style sheets created with White Line">
+      <div class="show-row">
+        <div class="show-card"><img src="brand-0.jpg" alt="Ocean Drift surf brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-1.jpg" alt="V3rtigo streetwear brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-2.jpg" alt="Solvora consulting brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-3.jpg" alt="Coastal Haven lifestyle brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-4.jpg" alt="Northvale Solutions brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-5.jpg" alt="Vitalis wellness brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-6.jpg" alt="Oceanica Supply Co. brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-7.jpg" alt="Saltwave Surf Co. brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-8.jpg" alt="Velora outdoor brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-0.jpg" alt="Ocean Drift surf brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-1.jpg" alt="V3rtigo streetwear brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-2.jpg" alt="Solvora consulting brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-3.jpg" alt="Coastal Haven lifestyle brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-4.jpg" alt="Northvale Solutions brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-5.jpg" alt="Vitalis wellness brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-6.jpg" alt="Oceanica Supply Co. brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-7.jpg" alt="Saltwave Surf Co. brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-8.jpg" alt="Velora outdoor brand style sheet — made with White Line" loading="lazy" /></div>
       </div>
-      <div>
-        <div class="pain">
-          <div class="pain-num mono">01</div>
-          <div>
-            <div class="pain-title">The logo lives on one person's laptop</div>
-            <div class="pain-desc">Every merch drop, poster, or press kit starts with "hey who has the logo?" White Line ends that conversation.</div>
-          </div>
-        </div>
-        <div class="pain">
-          <div class="pain-num mono">02</div>
-          <div>
-            <div class="pain-title">Merch takes weeks and a minimum order</div>
-            <div class="pain-desc">No MOQ. No turnaround drama. Apply your brand to tees, stickers, and posters — one at a time if you need.</div>
-          </div>
-        </div>
-        <div class="pain">
-          <div class="pain-num mono">03</div>
-          <div>
-            <div class="pain-title">Every platform looks completely different</div>
-            <div class="pain-desc">Your Brand Vault exports to Spotify canvas, Instagram, press kit, and print — consistent, every time.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="music-stats">
-      <div class="mstat">
-        <div class="mstat-num">4M+</div>
-        <div class="mstat-lbl mono">Independent artists<br>on Spotify alone</div>
-      </div>
-      <div class="mstat">
-        <div class="mstat-num">$1.5B</div>
-        <div class="mstat-lbl mono">Indie merch market<br>annually</div>
-      </div>
-      <div class="mstat">
-        <div class="mstat-num">$0</div>
-        <div class="mstat-lbl mono">Budget for a designer<br>on retainer</div>
+      <div class="show-row rev">
+        <div class="show-card"><img src="brand-9.jpg" alt="Vitalis brand sheet style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-10.jpg" alt="Sunflare lifestyle brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-11.jpg" alt="Northvue outdoor gear brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-12.jpg" alt="Azure logo system style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-13.jpg" alt="Neros food brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-14.jpg" alt="Northvale Collective brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-15.jpg" alt="Noctara consulting brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-16.jpg" alt="Novara and Peakline brands style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-9.jpg" alt="Vitalis brand sheet style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-10.jpg" alt="Sunflare lifestyle brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-11.jpg" alt="Northvue outdoor gear brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-12.jpg" alt="Azure logo system style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-13.jpg" alt="Neros food brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-14.jpg" alt="Northvale Collective brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-15.jpg" alt="Noctara consulting brand style sheet — made with White Line" loading="lazy" /></div>
+        <div class="show-card"><img src="brand-16.jpg" alt="Novara and Peakline brands style sheet — made with White Line" loading="lazy" /></div>
       </div>
     </div>
   </section>

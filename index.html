@@ -79,7 +79,7 @@
     .kit:hover { box-shadow: 5px 8px 0 #F6790A26, 0 18px 44px #00000080; }
 
     /* ── HERO ── */
-    .hero { position: relative; padding: 108px 40px 120px; border-bottom: 1px solid var(--ink); display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; min-height: min(86vh, 860px); }
+    .hero { position: relative; padding: 108px 40px 120px; border-bottom: 1px solid var(--ink); display: grid; grid-template-columns: 1fr; align-items: center; min-height: min(86vh, 860px); }
     .hero h1 { font-size: clamp(52px, 7.2vw, 96px); text-transform: uppercase; margin: 20px 0 24px; text-shadow: 0 2px 30px rgba(0,0,0,0.75); }
     .hero h1 .b { color: var(--blue); }
     .hero-eyebrow { display: flex; align-items: center; gap: 10px; color: var(--mute); }
@@ -142,12 +142,21 @@
     .rd4 { animation-delay: 1.55s; } .rd5 { animation-delay: 1.85s; }
     @keyframes rise { to { opacity: 1; transform: translateY(0); } }
 
-    /* ── TICKER ── */
-    .ticker { background: var(--ink); color: var(--paper); overflow: hidden; padding: 13px 0; position: relative; border-bottom: 1px solid var(--edge); }
-    .ticker::after { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: #1B1A1426; }
-    .ticker-track { display: flex; gap: 44px; width: max-content; animation: ticker 36s linear infinite; position: relative; z-index: 1; }
-    .ticker-item { display: flex; align-items: center; gap: 44px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap; }
-    .ticker-item .reg { opacity: 0.45; }
+    /* ── TICKER: the highway ── */
+    .ticker {
+      overflow: hidden; padding: 30px 0; position: relative;
+      border-top: 1px solid var(--edge); border-bottom: 1px solid var(--edge);
+      background-color: #121009;
+      background-image: repeating-linear-gradient(90deg, rgba(242,239,227,0.5) 0 30px, transparent 30px 68px);
+      background-size: 100% 3px; background-position: 0 50%; background-repeat: no-repeat;
+    }
+    .ticker::before, .ticker::after { content: ''; position: absolute; left: 0; right: 0; height: 2px; background: rgba(242,239,227,0.3); }
+    .ticker::before { top: 9px; }
+    .ticker::after { bottom: 9px; }
+    .ticker-track { display: flex; gap: 60px; width: max-content; animation: ticker 40s linear infinite; position: relative; z-index: 1; }
+    .ticker-item { display: flex; align-items: center; gap: 60px; font-family: 'IBM Plex Mono', monospace; font-size: 15px; letter-spacing: 0.16em; text-transform: uppercase; white-space: nowrap; color: var(--ink); }
+    .ticker-item span { background: #121009; padding: 3px 12px; }
+    .ticker-item .car { width: 44px; height: 18px; color: var(--blue); flex-shrink: 0; }
     @keyframes ticker { to { transform: translateX(-50%); } }
 
     /* ── APP MOCK ── */
@@ -252,7 +261,7 @@
         .music-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--edge); border-radius: var(--radius); background: var(--sheet); }
     .music-left { padding: 42px 38px; border-right: 1px solid var(--line); }
     .music-eyebrow { color: var(--ember); display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
-    .music-h2 { font-size: clamp(40px, 5.5vw, 60px); text-transform: uppercase; margin-bottom: 20px; }
+    .music-h2 { font-size: clamp(40px, 5.5vw, 60px); text-transform: uppercase; margin-bottom: 20px; color: #FFFFFF; }
     .music-h2 .e { color: var(--blue); }
     .music-body { font-size: 15px; color: var(--ink-soft); max-width: 420px; margin-bottom: 32px; }
     .music-body strong { color: var(--ink); font-weight: 600; }
@@ -343,6 +352,11 @@
         <line x1="7" y1="0" x2="7" y2="14" stroke="currentColor" stroke-width="1"/>
         <line x1="0" y1="7" x2="14" y2="7" stroke="currentColor" stroke-width="1"/>
       </symbol>
+      <symbol id="car" viewBox="0 0 48 20">
+        <path d="M3 14 L5 9.5 Q6 7.5 8.5 7.2 L15 6.5 L19 3 Q20.2 2 22 2 L30 2 Q31.8 2 33 3.2 L37 6.8 L42.5 8 Q45.2 8.8 45.7 11.5 L46 14 Q46 15 45 15 L42.6 15 A4.6 4.6 0 0 0 33.4 15 L16.6 15 A4.6 4.6 0 0 0 7.4 15 L4 15 Q3 15 3 14 Z" fill="currentColor"/>
+        <circle cx="12" cy="15" r="3.2" fill="currentColor"/>
+        <circle cx="38" cy="15" r="3.2" fill="currentColor"/>
+      </symbol>
     </defs>
   </svg>
 
@@ -385,86 +399,34 @@
       </div>
     </div>
 
-    <!-- SPECIMEN CARD — a brand kit assembling itself -->
-    <div class="specimen-wrap" aria-label="Sample brand kit specimen sheet">
-      <span class="cm tl"></span><span class="cm tr"></span><span class="cm bl"></span><span class="cm br"></span>
-      <div class="specimen">
-        <div class="spec-top">
-          <span class="mono">Brand kit — No. 0047</span>
-          <svg class="reg"><use href="#regmark"/></svg>
-        </div>
-        <div class="spec-logo-row">
-          <div class="spec-mark" aria-hidden="true">
-            <svg class="draw" viewBox="0 0 84 84" fill="none">
-              <circle cx="42" cy="42" r="38" stroke="var(--ink)" stroke-width="2" pathLength="1"/>
-              <path class="d2" d="M42 62 C30 54 27 45 32 37 C35 32 40 30 40 24 C46 28 44 34 48 38 C51 41 55 40 55 34 C60 42 56 55 42 62 Z" stroke="var(--blue)" stroke-width="2.5" stroke-linejoin="round" pathLength="1"/>
-              <path class="d3" d="M22 70 L62 70" stroke="var(--blue)" stroke-width="2" pathLength="1"/>
-            </svg>
-          </div>
-          <div class="rise rd2">
-            <div class="spec-wordmark display">Smoke &amp; Salt</div>
-            <div class="spec-tag">Texas-style barbecue truck — generated from one sentence</div>
-          </div>
-        </div>
-        <div class="spec-row rise rd3">
-          <span class="mono spec-label">Palette</span>
-          <div class="chips">
-            <button class="chip" data-hex="#1B1A14" style="background:#1B1A14" aria-label="Copy hex 1B1A14"><span class="tip">#1B1A14</span></button>
-            <button class="chip" data-hex="#F6790A" style="background:#F6790A" aria-label="Copy hex F6790A"><span class="tip">#F6790A</span></button>
-            <button class="chip" data-hex="#F0E4D0" style="background:#F0E4D0" aria-label="Copy hex F0E4D0"><span class="tip">#F0E4D0</span></button>
-            <button class="chip" data-hex="#D9A24B" style="background:#D9A24B" aria-label="Copy hex D9A24B"><span class="tip">#D9A24B</span></button>
-          </div>
-        </div>
-        <div class="spec-row rise rd4">
-          <span class="mono spec-label">Type</span>
-          <div class="spec-type">
-            <span class="aa display">Aa</span>
-            <span class="pair">Display + body pairing, ready to license</span>
-          </div>
-        </div>
-        <div class="spec-row rise rd4" style="border-bottom:none">
-          <span class="mono spec-label">Files</span>
-          <div class="tags">
-            <span class="tag mono hot">SVG</span>
-            <span class="tag mono">PNG</span>
-            <span class="tag mono">PDF</span>
-            <span class="tag mono">EPS</span>
-          </div>
-        </div>
-        <div class="spec-foot rise rd5">
-          <span class="mono">Stored in Brand Vault</span>
-          <span class="mono" style="color:var(--blue)">whitelinedesign.ai</span>
-        </div>
-      </div>
-    </div>
   </header>
 
   <!-- TICKER -->
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
       <div class="ticker-item">
-        <span>Etsy sellers</span><svg class="reg"><use href="#regmark"/></svg>
-        <span>Independent bands</span><svg class="reg"><use href="#regmark"/></svg>
-        <span>Food trucks</span><svg class="reg"><use href="#regmark"/></svg>
-        <span>Shopify stores</span><svg class="reg"><use href="#regmark"/></svg>
-        <span>DJs &amp; producers</span><svg class="reg"><use href="#regmark"/></svg>
-        <span>Pop-up markets</span><svg class="reg"><use href="#regmark"/></svg>
-        <span>Local caf&eacute;s</span><svg class="reg"><use href="#regmark"/></svg>
-        <span>Podcasters</span><svg class="reg"><use href="#regmark"/></svg>
-        <span>Fitness coaches</span><svg class="reg"><use href="#regmark"/></svg>
-        <span>Creative studios</span><svg class="reg"><use href="#regmark"/></svg>
+        <span>Etsy sellers</span><svg class="car" aria-hidden="true"><use href="#car"/></svg>
+        <span>Independent bands</span><svg class="car" aria-hidden="true"><use href="#car"/></svg>
+        <span>Food trucks</span><svg class="car" aria-hidden="true"><use href="#car"/></svg>
+        <span>Shopify stores</span><svg class="car" aria-hidden="true"><use href="#car"/></svg>
+        <span>DJs &amp; producers</span><svg class="car" aria-hidden="true"><use href="#car"/></svg>
+        <span>Pop-up markets</span><svg class="car" aria-hidden="true"><use href="#car"/></svg>
+        <span>Local caf&eacute;s</span><svg class="car" aria-hidden="true"><use href="#car"/></svg>
+        <span>Podcasters</span><svg class="car" aria-hidden="true"><use href="#car"/></svg>
+        <span>Fitness coaches</span><svg class="car" aria-hidden="true"><use href="#car"/></svg>
+        <span>Creative studios</span><svg class="car" aria-hidden="true"><use href="#car"/></svg>
       </div>
       <div class="ticker-item">
-        <span>Etsy sellers</span><svg class="reg"><use href="#regmark"/></svg>
-        <span>Independent bands</span><svg class="reg"><use href="#regmark"/></svg>
-        <span>Food trucks</span><svg class="reg"><use href="#regmark"/></svg>
-        <span>Shopify stores</span><svg class="reg"><use href="#regmark"/></svg>
-        <span>DJs &amp; producers</span><svg class="reg"><use href="#regmark"/></svg>
-        <span>Pop-up markets</span><svg class="reg"><use href="#regmark"/></svg>
-        <span>Local caf&eacute;s</span><svg class="reg"><use href="#regmark"/></svg>
-        <span>Podcasters</span><svg class="reg"><use href="#regmark"/></svg>
-        <span>Fitness coaches</span><svg class="reg"><use href="#regmark"/></svg>
-        <span>Creative studios</span><svg class="reg"><use href="#regmark"/></svg>
+        <span>Etsy sellers</span><svg class="car" aria-hidden="true"><use href="#car"/></svg>
+        <span>Independent bands</span><svg class="car" aria-hidden="true"><use href="#car"/></svg>
+        <span>Food trucks</span><svg class="car" aria-hidden="true"><use href="#car"/></svg>
+        <span>Shopify stores</span><svg class="car" aria-hidden="true"><use href="#car"/></svg>
+        <span>DJs &amp; producers</span><svg class="car" aria-hidden="true"><use href="#car"/></svg>
+        <span>Pop-up markets</span><svg class="car" aria-hidden="true"><use href="#car"/></svg>
+        <span>Local caf&eacute;s</span><svg class="car" aria-hidden="true"><use href="#car"/></svg>
+        <span>Podcasters</span><svg class="car" aria-hidden="true"><use href="#car"/></svg>
+        <span>Fitness coaches</span><svg class="car" aria-hidden="true"><use href="#car"/></svg>
+        <span>Creative studios</span><svg class="car" aria-hidden="true"><use href="#car"/></svg>
       </div>
     </div>
   </div>
@@ -563,7 +525,7 @@
       <div class="kit">
         <div class="kit-no"><span class="mono">Kit No. 0047</span><span class="mono">Food truck</span></div>
         <div class="kit-name display">Smoke<br>&amp; Salt</div>
-        <div class="kit-vibe">Texas-style barbecue truck — the kit assembling itself at the top of this page</div>
+        <div class="kit-vibe">Texas-style barbecue truck — menu board to truck wrap in one pass</div>
         <div class="kit-chips">
           <span class="chip" style="background:#1B1A14"></span>
           <span class="chip" style="background:#F6790A"></span>

@@ -76,6 +76,8 @@
       --mute: #777464; --line: #DCD9CB; --edge: #1B1A14;
     }
     .specimen { box-shadow: 8px 10px 0 #F6790A26, 0 24px 60px #00000080; }
+    .specimen-wrap { opacity: 0; transform: translateY(16px) scale(0.985); pointer-events: none; transition: opacity 0.45s ease, transform 0.45s ease; }
+    .specimen-wrap.on { opacity: 1; transform: none; pointer-events: auto; }
     .kit:hover { box-shadow: 5px 8px 0 #F6790A26, 0 18px 44px #00000080; }
 
     /* ── HERO ── */
@@ -114,8 +116,9 @@
 
     .spec-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid var(--line); color: var(--mute); }
     .spec-logo-row { display: flex; align-items: center; gap: 24px; padding: 26px 0 20px; border-bottom: 1px solid var(--line); }
-    .spec-mark { width: 84px; height: 84px; flex-shrink: 0; }
-    .spec-mark svg { width: 100%; height: 100%; }
+    .spec-mark { width: 98px; height: 98px; flex-shrink: 0; border: 1.5px dashed var(--line); border-radius: var(--radius); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; }
+    .logo-ghost { font-size: 34px; line-height: 1; color: var(--mute); opacity: 0.55; }
+    .logo-cap { font-size: 7px; letter-spacing: 0.14em; color: var(--mute); }
     .spec-wordmark { font-size: 34px; text-transform: uppercase; line-height: 1; }
     .spec-tag { font-size: 13px; color: var(--mute); margin-top: 8px; font-style: italic; }
     .spec-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
@@ -232,6 +235,11 @@
     .kit-chips .chip:hover { transform: none; }
     .kit-tags { display: flex; gap: 6px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--line); }
     .kits-note { text-align: center; color: var(--mute); margin-top: 28px; font-size: 13px; }
+
+    .kit-logo { height: 132px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; border: 1.5px dashed var(--line); border-radius: var(--radius); margin-bottom: 18px; }
+    .kit-logo.filled { border: 1px solid var(--line); background: var(--paper); }
+    .kit-logo img { max-height: 118px; max-width: 92%; display: block; }
+    .kit-logo .logo-ghost { font-size: 40px; }
 
     /* ── VAULT ── */
     .vault-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--edge); border-radius: var(--radius); background: var(--sheet); overflow: hidden; }
@@ -407,7 +415,7 @@
     </div>
 
     <!-- LIVE SPECIMEN — sketches the visitor's brand as they type -->
-    <div class="specimen-wrap rise rd2" aria-live="polite">
+    <div class="specimen-wrap" id="live-wrap" aria-live="polite">
       <span class="cm tl"></span><span class="cm tr"></span><span class="cm bl"></span><span class="cm br"></span>
       <div class="specimen">
         <div class="spec-top">
@@ -416,10 +424,8 @@
         </div>
         <div class="spec-logo-row">
           <div class="spec-mark" aria-hidden="true">
-            <svg viewBox="0 0 84 84" fill="none">
-              <circle cx="42" cy="42" r="38" stroke="var(--ink)" stroke-width="2"/>
-              <text id="live-initial" x="42" y="56" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="40" fill="var(--ink)">W</text>
-            </svg>
+            <div class="logo-ghost display" id="live-initial">W</div>
+            <div class="logo-cap mono">Your logo here</div>
           </div>
           <div>
             <div class="spec-wordmark display" id="live-wordmark">Your Brand</div>
@@ -445,7 +451,7 @@
           </div>
         </div>
         <div class="spec-foot">
-          <span class="mono">Type your name to sketch it</span>
+          <span class="mono">Auto-sketched from your name</span>
           <a class="mono" id="live-claim" href="https://app.whitelinedesign.ai/sign-up" style="color:var(--blue); text-decoration:none">Claim this kit &rarr;</a>
         </div>
       </div>
@@ -550,6 +556,7 @@
     <div class="kits-grid">
       <div class="kit">
         <div class="kit-no"><span class="mono">Kit No. 0031</span><span class="mono">Band</span></div>
+        <div class="kit-logo" aria-hidden="true"><div class="logo-ghost display">P</div><div class="logo-cap mono">Your logo here</div></div>
         <div class="kit-name display" style="letter-spacing:0.04em">Paper<br>Motel</div>
         <div class="kit-vibe">Indie rock four-piece — posters, tees, and a press kit that finally match</div>
         <div class="kit-chips">
@@ -563,6 +570,7 @@
       </div>
       <div class="kit">
         <div class="kit-no"><span class="mono">Kit No. 0018</span><span class="mono">Etsy shop</span></div>
+        <div class="kit-logo" aria-hidden="true"><div class="logo-ghost display">L</div><div class="logo-cap mono">Your logo here</div></div>
         <div class="kit-name display" style="font-weight:600; text-transform:none">Loose<br>Thread</div>
         <div class="kit-vibe">Hand-embroidery studio — packaging, thank-you cards, and shop banner in one pass</div>
         <div class="kit-chips">
@@ -576,6 +584,7 @@
       </div>
       <div class="kit">
         <div class="kit-no"><span class="mono">Kit No. 0047</span><span class="mono">Food truck</span></div>
+        <div class="kit-logo filled"><img src="kit-smoke-salt.webp" alt="Smoke &amp; Salt logo — a pig roasting on a spit in front of a Texas barbecue truck" loading="lazy" /></div>
         <div class="kit-name display">Smoke<br>&amp; Salt</div>
         <div class="kit-vibe">Texas-style barbecue truck — menu board to truck wrap in one pass</div>
         <div class="kit-chips">
@@ -883,8 +892,10 @@
       var claim = document.getElementById('live-claim');
       var chips = document.querySelectorAll('#live-chips .chip');
       function hash(s) { var h = 0; for (var i = 0; i < s.length; i++) { h = (h * 31 + s.charCodeAt(i)) >>> 0; } return h; }
+      var wrap = document.getElementById('live-wrap');
       function sketch() {
         var v = input.value.trim();
+        wrap.classList.toggle('on', v.length > 0);
         var name = v || 'Your Brand';
         wordmark.textContent = name.length > 22 ? name.slice(0, 22) + '\u2026' : name;
         initial.textContent = name.charAt(0).toUpperCase();

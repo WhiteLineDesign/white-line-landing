@@ -161,7 +161,7 @@
     .app-shot { display: block; width: 100%; height: auto; }
     .app-caption { text-align: center; color: var(--mute); margin-top: 24px; font-size: 13px; }
 
-    .hero-video { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .hero > .hero-video { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
     .hero-video video { width: 100%; height: 100%; object-fit: cover; }
     .hero-video::after {
       content: ''; position: absolute; inset: 0;
@@ -169,7 +169,8 @@
         linear-gradient(90deg, rgba(11,10,8,0.62) 0%, rgba(11,10,8,0.42) 50%, rgba(11,10,8,0.28) 100%),
         linear-gradient(180deg, rgba(11,10,8,0.45) 0%, rgba(11,10,8,0.05) 42%, rgba(11,10,8,0.92) 100%);
     }
-    .hero > div { position: relative; }
+    .hero > div:not(.hero-video) { position: relative; z-index: 1; }
+    .hero-video { z-index: 0; }
 
     /* ── PHOTO FRAMES ── */
     .vault-top { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; margin-bottom: 48px; }

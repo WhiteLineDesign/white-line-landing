@@ -160,7 +160,7 @@
     @keyframes ticker { to { transform: translateX(-50%); } }
 
     /* ── APP MOCK ── */
-    .app-wrap { position: relative; padding: 18px; max-width: 1180px; margin: 0 auto; }
+    .app-wrap { position: relative; padding: 18px; max-width: none; margin: 0 auto; }
     .app-frame { background: var(--sheet); border: 1px solid var(--edge); border-radius: var(--radius); overflow: hidden; box-shadow: 8px 8px 0 var(--blue-soft), 8px 8px 0 1px var(--line); }
     .app-chrome { display: flex; align-items: center; gap: 14px; padding: 10px 16px; border-bottom: 1px solid var(--edge); background: var(--paper); }
     .chrome-dots { display: flex; gap: 5px; }
@@ -186,10 +186,15 @@
     .photo-wrap { position: relative; padding: 16px; }
     .photo { display: block; width: 100%; height: auto; border: 1px solid var(--edge); border-radius: var(--radius); }
 
+    .bg-video { position: absolute; inset: 0; overflow: hidden; z-index: 0; pointer-events: none; }
+    .bg-video video { width: 100%; height: 100%; object-fit: cover; }
+    .bg-video::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,10,8,0.92) 0%, rgba(11,10,8,0.74) 50%, rgba(11,10,8,0.94) 100%); }
+    #vault > *:not(.bg-video) { position: relative; z-index: 1; }
+
     /* ── MERCH BAND ── */
-    .merch { position: relative; min-height: 700px; display: flex; align-items: center; padding: 120px 40px; border-bottom: 1px solid var(--line); overflow: hidden; }
-    .merch-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 68% center; }
-    .merch::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,7,5,0.94) 0%, rgba(8,7,5,0.72) 40%, rgba(8,7,5,0.12) 100%); z-index: 1; }
+    .merch { position: relative; aspect-ratio: 16 / 9; min-height: 560px; display: flex; align-items: center; padding: 64px 40px; border-bottom: 1px solid var(--line); overflow: hidden; }
+    .merch-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .merch::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,7,5,0.88) 0%, rgba(8,7,5,0.55) 40%, rgba(8,7,5,0.05) 100%); z-index: 1; }
     .merch-inner { position: relative; z-index: 2; max-width: 540px; }
     .merch-eyebrow { color: var(--blue); display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
     .merch h2 { font-size: clamp(40px, 5.5vw, 62px); text-transform: uppercase; margin-bottom: 16px; }
@@ -321,8 +326,8 @@
       .kit-price-box { border-left: none; border-top: 1px solid var(--line); padding: 24px 0 0; text-align: left; }
       .music-grid { grid-template-columns: 1fr; }
       .vault-top { grid-template-columns: 1fr; gap: 28px; }
-      .merch { min-height: 540px; padding: 80px 24px; }
-      .merch-bg { object-position: 78% center; }
+      .merch { aspect-ratio: auto; min-height: 540px; padding: 80px 24px; }
+      .merch-bg { object-position: 70% center; }
       .music-left { border-right: none; border-bottom: 1px solid var(--line); }
     }
     @media (max-width: 620px) {
@@ -555,6 +560,11 @@
 
   <!-- BRAND VAULT -->
   <section class="section" id="vault">
+    <div class="bg-video" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="metadata" poster="vault-poster.jpg">
+        <source src="vault-bg.mp4" type="video/mp4" />
+      </video>
+    </div>
     <div class="section-head">
       <svg class="reg"><use href="#regmark"/></svg>
       <span class="mono">Brand Vault</span>
@@ -813,12 +823,13 @@
       if (e.key === 'Enter') document.getElementById('wl-btn').click();
     });
 
-    // Respect reduced motion: hold the hero video on its poster frame
+    // Respect reduced motion: hold all background videos on their poster frames
     (function () {
-      var v = document.getElementById('hero-vid');
-      if (v && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        v.removeAttribute('autoplay');
-        v.pause();
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('video').forEach(function (v) {
+          v.removeAttribute('autoplay');
+          v.pause();
+        });
       }
     })();
 

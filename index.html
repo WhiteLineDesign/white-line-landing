@@ -191,9 +191,9 @@
     .bg-video::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,10,8,0.55) 0%, rgba(11,10,8,0.25) 45%, rgba(11,10,8,0.9) 100%); }
     #vault > *:not(.bg-video) { position: relative; z-index: 1; }
 
-    #vault { padding: 110px 40px 110px; min-height: 820px; }
+    #vault { padding: 110px 40px 56px; min-height: 820px; display: flex; flex-direction: column; }
     #vault .h2, #vault .sub { text-shadow: 0 2px 24px rgba(0,0,0,0.75); }
-    #vault .vault-grid { margin-top: 210px; }
+    #vault .vault-grid { margin-top: auto; background: rgba(18,16,12,0.58); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
 
     /* ── MERCH BAND ── */
     .merch { position: relative; aspect-ratio: 16 / 9; min-height: 560px; display: flex; align-items: center; padding: 64px 40px; border-bottom: 1px solid var(--line); overflow: hidden; }

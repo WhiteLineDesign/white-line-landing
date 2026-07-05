@@ -85,7 +85,13 @@
     .hero-eyebrow { display: flex; align-items: center; gap: 10px; color: var(--mute); }
     .hero-sub { font-size: 17px; color: var(--ink-soft); max-width: 460px; margin-bottom: 36px; text-shadow: 0 1px 16px rgba(0,0,0,0.85); }
     .hero-sub strong { font-weight: 600; color: var(--ink); }
-    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 44px; }
+    .hero-gen { display: flex; gap: 10px; flex-wrap: wrap; max-width: 580px; margin-bottom: 16px; }
+    .gen-input { flex: 1; min-width: 250px; background: rgba(18,16,12,0.72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border: 1px solid var(--edge); color: var(--ink); font-family: 'Instrument Sans', sans-serif; font-size: 16px; padding: 15px 18px; border-radius: var(--radius); outline: none; transition: border-color 0.15s; }
+    .gen-input:focus { border-color: var(--blue); }
+    .gen-input::placeholder { color: var(--mute); }
+    .hero-gen-sub { font-size: 12px; color: var(--mute); margin-bottom: 44px; }
+    .hero-gen-sub a { color: var(--ink-soft); text-decoration: underline; text-underline-offset: 3px; }
+    .hero-gen-sub a:hover { color: var(--blue); }
     .hero-foot { display: flex; align-items: center; gap: 14px; color: var(--mute); }
     .hero-foot .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--ember); }
 
@@ -187,11 +193,11 @@
     .photo { display: block; width: 100%; height: auto; border: 1px solid var(--edge); border-radius: var(--radius); }
 
     .bg-video { position: absolute; inset: 0; overflow: hidden; z-index: 0; pointer-events: none; }
-    .bg-video video { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .bg-video video { width: 100%; height: 100%; object-fit: cover; object-position: center; }
     .bg-video::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,10,8,0.55) 0%, rgba(11,10,8,0.25) 45%, rgba(11,10,8,0.9) 100%); }
     #vault > *:not(.bg-video) { position: relative; z-index: 1; }
 
-    #vault { padding: 110px 40px 56px; min-height: min(92vh, 940px); display: flex; flex-direction: column; }
+    #vault { padding: 110px 40px 56px; aspect-ratio: 16 / 9; min-height: 720px; display: flex; flex-direction: column; }
     #vault .h2, #vault .sub { text-shadow: 0 2px 24px rgba(0,0,0,0.75); }
     #vault .vault-grid { margin-top: auto; background: rgba(18,16,12,0.58); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
 
@@ -328,7 +334,7 @@
       .nav-links li:not(:last-child) { display: none; }
       .section { padding: 56px 20px; }
       .cta { padding: 72px 20px; }
-      #vault { padding: 64px 20px; min-height: 0; }
+      #vault { padding: 64px 20px; min-height: 0; aspect-ratio: auto; }
       #vault .vault-grid { margin-top: 80px; }
       .showcase { padding: 56px 0; }
       .showcase-head { padding: 0 20px; }
@@ -388,10 +394,11 @@
       </div>
       <h1 class="display">One line in.<br>A whole <span class="b">brand</span> out.</h1>
       <p class="hero-sub rise rd1">Describe your business in a sentence. White Line drafts the logo, colors, type, and every file format — <strong>a complete brand kit you own forever.</strong></p>
-      <div class="hero-ctas rise rd1">
-        <a href="https://app.whitelinedesign.ai/sign-up" class="btn btn-ink">Start free</a>
-        <a href="#work" class="btn btn-line">See a sample kit</a>
+      <div class="hero-gen rise rd1">
+        <input class="gen-input" id="gen-name" type="text" placeholder="Type your business name&hellip;" aria-label="Your business name" maxlength="60" autocomplete="off" />
+        <button class="btn btn-ink" id="gen-btn">Draft my brand kit &rarr;</button>
       </div>
+      <div class="hero-gen-sub rise rd1 mono">Free &middot; No credit card &middot; <a href="#work">or browse sample kits</a></div>
       <div class="hero-foot rise rd2">
         <span class="dot" aria-hidden="true"></span>
         <span class="mono">5M+ sellers are trading without a real brand</span>
@@ -800,6 +807,20 @@
     document.getElementById('wl-email').addEventListener('keydown', function (e) {
       if (e.key === 'Enter') document.getElementById('wl-btn').click();
     });
+
+    // Hero: carry the typed business name straight into sign-up
+    (function () {
+      var input = document.getElementById('gen-name');
+      var btn = document.getElementById('gen-btn');
+      function go() {
+        var v = input.value.trim();
+        var url = 'https://app.whitelinedesign.ai/sign-up';
+        if (v) url += '?brand=' + encodeURIComponent(v);
+        window.location.href = url;
+      }
+      btn.addEventListener('click', go);
+      input.addEventListener('keydown', function (e) { if (e.key === 'Enter') go(); });
+    })();
 
     // Respect reduced motion: hold all background videos on their poster frames
     (function () {

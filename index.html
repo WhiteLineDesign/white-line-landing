@@ -3,324 +3,684 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>White Line Design — Brand OS for Small Business</title>
+  <title>White Line Design — One line in. A whole brand out.</title>
+  <meta name="description" content="Describe your business in one line. White Line drafts your logo, colors, type, and files — a complete brand kit you own forever." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --paper: #0B0A08;          /* page: asphalt */
+      --sheet: #14120E;          /* panels */
+      --ink: #F2EFE3;            /* primary text */
+      --ink-soft: #C7C3B4;
+      --mute: #8D897A;
+      --line: #24211A;           /* hairline dividers */
+      --edge: #302C21;           /* card borders */
+      --blue: #F6790A;           /* accent: signal orange (matches the app) */
+      --blue-soft: #F6790A1F;
+      --ember: #D9A24B;          /* secondary: gold */
+      --radius: 2px;
+    }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: #080808; color: #f0ede6; overflow-x: hidden; }
+    body {
+      font-family: 'Instrument Sans', sans-serif;
+      background: var(--paper); color: var(--ink);
+      overflow-x: hidden; line-height: 1.6;
+    }
+    ::selection { background: var(--blue); color: var(--sheet); }
+    :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+    .display { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; letter-spacing: -0.015em; line-height: 0.95; }
+    .mono { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+    /* registration mark glyph */
+    .reg { display: inline-block; width: 13px; height: 13px; flex-shrink: 0; }
 
     /* ── NAV ── */
     nav {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 18px 48px; border-bottom: 1px solid #fff;
-      position: sticky; top: 0; background: #080808ee;
-      backdrop-filter: blur(8px); z-index: 100;
+      padding: 16px 40px; border-bottom: 1px solid var(--ink);
+      position: sticky; top: 0; background: color-mix(in srgb, var(--paper) 92%, transparent);
+      backdrop-filter: blur(10px); z-index: 100;
     }
-    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.12em; color: #fff; text-decoration: none; }
-    .nav-right { display: flex; gap: 28px; align-items: center; list-style: none; }
-    .nav-right a { font-size: 15px; letter-spacing: 0.12em; text-transform: uppercase; color: #aaa; text-decoration: none; transition: color 0.2s; }
-    .nav-right a:hover { color: #fff; }
-    .nav-cta { background: #fff !important; color: #080808 !important; padding: 8px 20px; font-weight: 500 !important; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+    .nav-logo .wl { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 19px; letter-spacing: 0.02em; }
+    .nav-links { display: flex; gap: 30px; align-items: center; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--ink-soft); text-decoration: none; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta {
+      background: var(--ink); color: var(--sheet) !important; padding: 9px 20px;
+      font-weight: 600 !important; transition: background 0.15s !important;
+    }
+    .nav-cta:hover { background: var(--blue); }
 
-    /* ── SHARED ── */
-    .section { padding: 72px 48px; border-bottom: 1px solid #1c1c1c; position: relative; }
-    .section-label { font-size: 15px; letter-spacing: 0.26em; text-transform: uppercase; color: #666; margin-bottom: 32px; display: flex; align-items: center; gap: 12px; }
-    .section-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: #fff; opacity: 0.2; }
-    .section-h2 { font-family: 'Bebas Neue', sans-serif; font-size: 40px; color: #fff; margin-bottom: 8px; line-height: 1; }
-    .section-h2 .accent { color: #c8b97a; }
-    .section-sub { font-size: 15px; color: #999; font-weight: 300; margin-bottom: 32px; line-height: 1.75; max-width: 500px; }
-    .btn-primary { display: inline-block; background: #fff; color: #080808; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 14px 28px; border: none; cursor: pointer; border-radius: 0; margin-right: 10px; margin-bottom: 10px; text-decoration: none; transition: opacity 0.2s; }
-    .btn-primary:hover { opacity: 0.85; }
-    .btn-ghost { display: inline-block; background: transparent; color: #fff; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; padding: 13px 28px; border: 1px solid #333; cursor: pointer; border-radius: 0; margin-bottom: 10px; text-decoration: none; transition: border-color 0.2s; }
-    .btn-ghost:hover { border-color: #bbb; }
+    /* ── BUTTONS ── */
+    .btn { display: inline-block; font-family: 'Instrument Sans', sans-serif; font-size: 15px; font-weight: 600; padding: 15px 30px; text-decoration: none; cursor: pointer; border-radius: var(--radius); transition: background 0.15s, color 0.15s, border-color 0.15s; border: 1px solid var(--ink); }
+    .btn-ink { background: var(--ink); color: var(--sheet); }
+    .btn-ink:hover { background: var(--blue); border-color: var(--blue); }
+    .btn-line { background: transparent; color: var(--ink); }
+    .btn-line:hover { border-color: var(--blue); color: var(--blue); }
+
+    /* ── SECTION SCAFFOLD ── */
+    .section { padding: 88px 40px; border-bottom: 1px solid var(--line); position: relative; }
+    .section-head { display: flex; align-items: center; gap: 12px; margin-bottom: 36px; color: var(--mute); }
+    .section-head .rule { flex: 1; height: 1px; background: var(--line); }
+    .h2 { font-size: clamp(38px, 5.5vw, 60px); margin-bottom: 14px; text-transform: uppercase; }
+    .h2 .b { color: var(--blue); }
+    .sub { font-size: 16px; color: var(--ink-soft); max-width: 540px; margin-bottom: 40px; }
+
+    /* white paper cards on the dark table */
+    .specimen, .kit {
+      --paper: #EDEBDF; --sheet: #FBFAF4; --ink: #1B1A14; --ink-soft: #47453B;
+      --mute: #777464; --line: #DCD9CB; --edge: #1B1A14;
+    }
+    .specimen { box-shadow: 8px 10px 0 #F6790A26, 0 24px 60px #00000080; }
+    .kit:hover { box-shadow: 5px 8px 0 #F6790A26, 0 18px 44px #00000080; }
 
     /* ── HERO ── */
-    .hero {
-      padding: 80px 48px 88px; position: relative; border-bottom: 1px solid #fff; min-height: 520px;
-      display: flex; flex-direction: column; justify-content: center; overflow: hidden;
-    }
-    .hero-bg { position: absolute; inset: 0; pointer-events: none; }
-    .hero-eyebrow { font-size: 14px; letter-spacing: 0.24em; text-transform: uppercase; color: #444; margin-bottom: 22px; }
-    .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px, 9vw, 100px); line-height: 0.92; color: #fff; margin-bottom: 24px; }
-    .hero h1 .accent { color: #c8b97a; }
-    .hero-sub { font-size: 15px; color: #aaa; font-weight: 300; max-width: 440px; line-height: 1.75; margin-bottom: 40px; font-style: italic; }
-    .hero-sub strong { font-style: normal; font-weight: 400; color: #ccc; }
-    .hero-corner { position: absolute; right: 48px; top: 80px; bottom: 88px; display: flex; flex-direction: column; justify-content: center; align-items: flex-end; gap: 20px; }
-    .corner-rule { width: 1px; height: 60px; background: #fff; opacity: 0.1; margin: 0 auto; }
-    .corner-stat .num { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: #fff; line-height: 1; text-align: right; }
-    .corner-stat .lbl { font-size: 15px; color: #ccc; letter-spacing: 0.16em; text-transform: uppercase; text-align: right; margin-top: 4px; line-height: 1.6; }
+    .hero { position: relative; padding: 72px 40px 84px; border-bottom: 1px solid var(--ink); display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; min-height: 620px; }
+    .hero h1 { font-size: clamp(52px, 7.2vw, 96px); text-transform: uppercase; margin: 20px 0 24px; }
+    .hero h1 .b { color: var(--blue); }
+    .hero-eyebrow { display: flex; align-items: center; gap: 10px; color: var(--mute); }
+    .hero-sub { font-size: 17px; color: var(--ink-soft); max-width: 460px; margin-bottom: 36px; }
+    .hero-sub strong { font-weight: 600; color: var(--ink); }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 44px; }
+    .hero-foot { display: flex; align-items: center; gap: 14px; color: var(--mute); }
+    .hero-foot .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--ember); }
 
-    /* ── HOW IT WORKS ── */
-    .how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0; border: 1px solid #1c1c1c; }
-    .how-step { padding: 30px 26px; border-right: 1px solid #1c1c1c; }
+    /* ── SPECIMEN CARD ── */
+    .specimen-wrap { position: relative; padding: 18px; }
+    .specimen {
+      background: var(--sheet); border: 1px solid var(--edge); border-radius: var(--radius);
+      padding: 30px 30px 26px; position: relative;
+      box-shadow: 6px 6px 0 var(--blue-soft), 6px 6px 0 1px var(--line);
+      transform: rotate(-0.6deg);
+    }
+    .cm { position: absolute; width: 14px; height: 14px; pointer-events: none; }
+    .cm::before, .cm::after { content: ''; position: absolute; background: var(--ink-soft); }
+    .cm::before { width: 14px; height: 1px; }
+    .cm::after { width: 1px; height: 14px; }
+    .cm.tl { top: 0; left: 0; } .cm.tl::before { top: 0; } .cm.tl::after { left: 0; }
+    .cm.tr { top: 0; right: 0; } .cm.tr::before { top: 0; right: 0; } .cm.tr::after { right: 0; }
+    .cm.bl { bottom: 0; left: 0; } .cm.bl::before { bottom: 0; } .cm.bl::after { left: 0; bottom: 0; }
+    .cm.br { bottom: 0; right: 0; } .cm.br::before { bottom: 0; right: 0; } .cm.br::after { right: 0; bottom: 0; }
+
+    .spec-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid var(--line); color: var(--mute); }
+    .spec-logo-row { display: flex; align-items: center; gap: 24px; padding: 26px 0 20px; border-bottom: 1px solid var(--line); }
+    .spec-mark { width: 84px; height: 84px; flex-shrink: 0; }
+    .spec-mark svg { width: 100%; height: 100%; }
+    .spec-wordmark { font-size: 34px; text-transform: uppercase; line-height: 1; }
+    .spec-tag { font-size: 13px; color: var(--mute); margin-top: 8px; font-style: italic; }
+    .spec-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+    .spec-label { color: var(--mute); min-width: 72px; }
+    .chips { display: flex; gap: 8px; }
+    .chip { width: 46px; height: 34px; border: 1px solid var(--edge); border-radius: var(--radius); cursor: pointer; position: relative; transition: transform 0.12s; padding: 0; }
+    .chip:hover { transform: translateY(-2px); }
+    .chip .tip {
+      position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
+      background: var(--ink); color: var(--sheet); font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px; padding: 3px 7px; border-radius: 2px; white-space: nowrap;
+      opacity: 0; pointer-events: none; transition: opacity 0.15s;
+    }
+    .chip:hover .tip, .chip.copied .tip { opacity: 1; }
+    .spec-type { display: flex; align-items: baseline; gap: 14px; }
+    .spec-type .aa { font-size: 26px; }
+    .spec-type .pair { font-size: 13px; color: var(--ink-soft); }
+    .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tag { border: 1px solid var(--line); color: var(--ink-soft); padding: 4px 10px; border-radius: 2px; background: var(--paper); }
+    .tag.hot { border-color: var(--blue); color: var(--blue); background: var(--blue-soft); }
+    .spec-foot { display: flex; justify-content: space-between; padding-top: 16px; color: var(--mute); }
+
+    /* draw + rise animations */
+    .draw path, .draw circle { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1.5s cubic-bezier(0.6, 0, 0.3, 1) forwards; }
+    .draw .d2 { animation-delay: 0.55s; }
+    .draw .d3 { animation-delay: 1s; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    .rise { opacity: 0; transform: translateY(12px); animation: rise 0.65s ease forwards; }
+    .rd1 { animation-delay: 0.15s; } .rd2 { animation-delay: 0.9s; } .rd3 { animation-delay: 1.25s; }
+    .rd4 { animation-delay: 1.55s; } .rd5 { animation-delay: 1.85s; }
+    @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+
+    /* ── TICKER ── */
+    .ticker { background: var(--ink); color: var(--paper); overflow: hidden; padding: 13px 0; position: relative; border-bottom: 1px solid var(--edge); }
+    .ticker::after { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: #1B1A1426; }
+    .ticker-track { display: flex; gap: 44px; width: max-content; animation: ticker 36s linear infinite; position: relative; z-index: 1; }
+    .ticker-item { display: flex; align-items: center; gap: 44px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap; }
+    .ticker-item .reg { opacity: 0.45; }
+    @keyframes ticker { to { transform: translateX(-50%); } }
+
+    /* ── APP MOCK ── */
+    .app-wrap { position: relative; padding: 18px; max-width: 1180px; margin: 0 auto; }
+    .app-frame { background: var(--sheet); border: 1px solid var(--edge); border-radius: var(--radius); overflow: hidden; box-shadow: 8px 8px 0 var(--blue-soft), 8px 8px 0 1px var(--line); }
+    .app-chrome { display: flex; align-items: center; gap: 14px; padding: 10px 16px; border-bottom: 1px solid var(--edge); background: var(--paper); }
+    .chrome-dots { display: flex; gap: 5px; }
+    .chrome-dots span { width: 9px; height: 9px; border-radius: 50%; border: 1px solid var(--ink-soft); }
+    .chrome-dots span:first-child { background: var(--ember); border-color: var(--ember); }
+    .chrome-url { flex: 1; max-width: 320px; margin: 0 auto; text-align: center; border: 1px solid var(--line); border-radius: 3px; padding: 4px 12px; color: var(--mute); background: var(--sheet); font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; }
+    .app-shot { display: block; width: 100%; height: auto; }
+    .app-caption { text-align: center; color: var(--mute); margin-top: 24px; font-size: 13px; }
+
+    .hero-video { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .hero-video video { width: 100%; height: 100%; object-fit: cover; }
+    .hero-video::after {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(90deg, rgba(11,10,8,0.95) 0%, rgba(11,10,8,0.78) 42%, rgba(11,10,8,0.42) 100%),
+        linear-gradient(180deg, rgba(11,10,8,0.4) 0%, rgba(11,10,8,0) 45%, rgba(11,10,8,0.94) 100%);
+    }
+    .hero > div { position: relative; }
+
+    /* ── PHOTO FRAMES ── */
+    .vault-top { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; margin-bottom: 48px; }
+    .photo-wrap { position: relative; padding: 16px; }
+    .photo { display: block; width: 100%; height: auto; border: 1px solid var(--edge); border-radius: var(--radius); }
+
+    /* ── MERCH BAND ── */
+    .merch { position: relative; min-height: 540px; display: flex; align-items: center; padding: 88px 40px; border-bottom: 1px solid var(--line); overflow: hidden; }
+    .merch-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 68% center; }
+    .merch::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,7,5,0.94) 0%, rgba(8,7,5,0.72) 40%, rgba(8,7,5,0.12) 100%); z-index: 1; }
+    .merch-inner { position: relative; z-index: 2; max-width: 540px; }
+    .merch-eyebrow { color: var(--blue); display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+    .merch h2 { font-size: clamp(40px, 5.5vw, 62px); text-transform: uppercase; margin-bottom: 16px; }
+    .merch h2 .b { color: var(--blue); }
+    .merch p { font-size: 16px; color: var(--ink-soft); margin-bottom: 32px; max-width: 440px; }
+
+    /* ── HOW ── */
+    .how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--edge); border-radius: var(--radius); background: var(--sheet); overflow: hidden; }
+    .how-step { padding: 30px 26px 34px; border-right: 1px solid var(--line); position: relative; }
     .how-step:last-child { border-right: none; }
-    .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 0.2em; color: #777; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
-    .step-num::after { content: ''; flex: 1; height: 1px; background: #fff; opacity: 0.05; }
-    .step-title { font-size: 14px; font-weight: 500; color: #ccc; margin-bottom: 8px; }
-    .step-desc { font-size: 15px; color: #ccc; line-height: 1.75; font-weight: 300; }
+    .step-num { color: var(--blue); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    .step-num::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+    .step-title { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 18px; margin-bottom: 8px; }
+    .step-desc { font-size: 14px; color: var(--ink-soft); }
+
+    /* ── SAMPLE KITS ── */
+    .kits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .kit { background: var(--sheet); border: 1px solid var(--edge); border-radius: var(--radius); padding: 26px 24px 20px; position: relative; transition: transform 0.18s, box-shadow 0.18s; }
+    .kit:hover { transform: translateY(-4px); box-shadow: 5px 8px 0 var(--blue-soft), 5px 8px 0 1px var(--line); }
+    .kit-no { display: flex; justify-content: space-between; align-items: center; color: var(--mute); padding-bottom: 14px; border-bottom: 1px solid var(--line); margin-bottom: 22px; }
+    .kit-name { font-size: 30px; text-transform: uppercase; line-height: 0.95; min-height: 58px; }
+    .kit-vibe { font-size: 13px; color: var(--mute); font-style: italic; margin: 8px 0 20px; }
+    .kit-chips { display: flex; gap: 6px; margin-bottom: 18px; }
+    .kit-chips .chip { width: 38px; height: 26px; cursor: default; }
+    .kit-chips .chip:hover { transform: none; }
+    .kit-tags { display: flex; gap: 6px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--line); }
+    .kits-note { text-align: center; color: var(--mute); margin-top: 28px; font-size: 13px; }
 
     /* ── VAULT ── */
-    .vault-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; border: 1px solid #1c1c1c; }
-    .vault-feat { padding: 28px 24px; border-right: 1px solid #1c1c1c; }
+    .vault-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--edge); border-radius: var(--radius); background: var(--sheet); overflow: hidden; }
+    .vault-feat { padding: 28px 24px 32px; border-right: 1px solid var(--line); }
     .vault-feat:last-child { border-right: none; }
-    .vault-feat-icon { font-size: 18px; color: #fff; opacity: 0.25; margin-bottom: 14px; }
-    .vault-feat-title { font-size: 14px; font-weight: 500; color: #ccc; margin-bottom: 6px; }
-    .vault-feat-desc { font-size: 15px; color: #999; line-height: 1.75; font-weight: 300; }
+    .vault-icon { color: var(--blue); margin-bottom: 16px; }
+    .vault-icon svg { width: 22px; height: 22px; }
+    .vault-title { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 17px; margin-bottom: 7px; }
+    .vault-desc { font-size: 14px; color: var(--ink-soft); }
 
     /* ── PRICING ── */
-    .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; border: 1px solid #1c1c1c; }
-    .plan-card { padding: 30px 24px; border-right: 1px solid #1c1c1c; position: relative; }
-    .plan-card:last-child { border-right: none; }
-    .plan-card.featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: #fff; opacity: 0.15; }
-    .plan-badge { font-size: 15px; letter-spacing: 0.2em; text-transform: uppercase; color: #bbb; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
-    .plan-badge::before { content: ''; width: 16px; height: 1px; background: #fff; opacity: 0.2; }
-    .plan-name { font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: #aaa; margin-bottom: 12px; }
-    .plan-price { font-family: 'Bebas Neue', sans-serif; font-size: 50px; color: #fff; line-height: 1; }
-    .plan-price span { font-family: 'DM Sans', sans-serif; font-size: 15px; color: #888; font-weight: 300; } font-weight: 300; }
-    .plan-divider { height: 1px; background: #141414; margin: 18px 0; }
-    .plan-feature { font-size: 15px; color: #777; margin-bottom: 9px; display: flex; align-items: flex-start; gap: 8px; font-weight: 300; line-height: 1.5; }
-    .plan-feature::before { content: '—'; color: #aaa; flex-shrink: 0; font-size: 14px; margin-top: 1px; }
-    .plan-feature.on { color: #ddd; }
-    .plan-feature.on::before { color: #ffffff33; }
+    .kit-hero { border: 1px solid var(--blue); background: var(--sheet); border-radius: var(--radius); padding: 34px 32px; margin-bottom: 40px; display: grid; grid-template-columns: 1fr auto; gap: 36px; align-items: center; position: relative; box-shadow: 6px 6px 0 var(--blue-soft); }
+    .kit-hero-eyebrow { color: var(--blue); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .kit-hero-name { font-size: 34px; text-transform: uppercase; margin-bottom: 10px; }
+    .kit-hero-desc { font-size: 15px; color: var(--ink-soft); max-width: 480px; margin-bottom: 20px; }
+    .kit-feats { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 26px; max-width: 500px; }
+    .kit-feat { font-size: 14px; color: var(--ink-soft); display: flex; gap: 9px; }
+    .kit-feat::before { content: '—'; color: var(--blue); }
+    .kit-price-box { text-align: right; border-left: 1px solid var(--line); padding-left: 36px; }
+    .kit-price { font-size: 72px; line-height: 1; }
+    .kit-price-note { color: var(--mute); margin: 4px 0 20px; }
+    .or-rule { display: flex; align-items: center; gap: 16px; color: var(--mute); margin: 36px 0 26px; }
+    .or-rule span.rule { flex: 1; height: 1px; background: var(--line); }
+    .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--edge); border-radius: var(--radius); background: var(--sheet); overflow: hidden; }
+    .plan { padding: 32px 28px 36px; border-right: 1px solid var(--line); position: relative; }
+    .plan:last-child { border-right: none; }
+    .plan.featured { background: var(--blue-soft); }
+    .plan.featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--blue); }
+    .plan-badge { color: var(--blue); margin-bottom: 14px; }
+    .plan-name { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 17px; margin-bottom: 10px; }
+    .plan-price { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 52px; line-height: 1; letter-spacing: -0.02em; }
+    .plan-price span { font-family: 'Instrument Sans', sans-serif; font-size: 15px; font-weight: 400; color: var(--mute); }
+    .plan-div { height: 1px; background: var(--line); margin: 20px 0; }
+    .plan-feature { font-size: 14px; color: var(--mute); margin-bottom: 10px; display: flex; gap: 9px; line-height: 1.5; }
+    .plan-feature::before { content: '—'; color: var(--line); flex-shrink: 0; }
+    .plan-feature.on { color: var(--ink-soft); }
+    .plan-feature.on::before { color: var(--blue); }
+    .pricing-note { text-align: center; font-size: 13px; color: var(--mute); margin-top: 26px; }
 
-    /* ── NICHE ── */
-    .niche-tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
-    .niche-tag { border: 1px solid #1a1a1a; color: #777; font-size: 14px; padding: 6px 14px; letter-spacing: 0.08em; }
-    .niche-tag.active { border-color: #777; color: #bbb; }
-    .niche-tag.launch { border-color: #ffffff18; color: #c8b97a; }
-    .niche-tag.music { border-color: #c8b97a33; color: #c8b97a; background: #c8b97a08; position: relative; }
-    .niche-tag.music::before { content: 'NEW'; position: absolute; top: -7px; left: 50%; transform: translateX(-50%); font-size: 7px; letter-spacing: 0.2em; color: #c8b97a; opacity: 0.6; }
-    .niche-note { font-size: 15px; color: #aaa; letter-spacing: 0.06em; }
-    .niche-note span { color: #777; }
-
-    /* ── MUSIC SECTION ── */
-    .music-section { padding: 72px 48px; position: relative; overflow: hidden; border-top: 1px solid #fff; border-bottom: 1px solid #fff; }
-    .music-bg { position: absolute; inset: 0; pointer-events: none; }
-    .music-top { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid #1c1c1c; }
-    .music-left { padding: 40px 36px; border-right: 1px solid #1c1c1c; }
-    .music-eyebrow { font-size: 15px; letter-spacing: 0.22em; text-transform: uppercase; color: #c8b97a; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
-    .music-eyebrow::after { content: ''; flex: 1; height: 1px; background: #c8b97a; opacity: 0.2; }
-    .music-h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(38px, 5.5vw, 56px); color: #fff; line-height: 0.92; margin-bottom: 20px; }
-    .music-h2 .accent { color: #c8b97a; }
-    .music-body { font-size: 15px; color: #888; font-weight: 300; line-height: 1.85; margin-bottom: 32px; font-style: italic; }
-    .music-body strong { font-style: normal; font-weight: 400; color: #777; }
-    .music-right { padding: 0; }
-    .pain-item { padding: 24px 28px; border-bottom: 1px solid #111; display: flex; gap: 16px; align-items: flex-start; }
-    .pain-item:last-child { border-bottom: none; }
-    .pain-num { font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 0.16em; color: #aaa; flex-shrink: 0; padding-top: 3px; }
-    .pain-title { font-size: 14px; font-weight: 500; color: #bbb; margin-bottom: 5px; }
-    .pain-desc { font-size: 15px; color: #999; font-weight: 300; line-height: 1.75; }
-    .music-stat-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; border: 1px solid #1c1c1c; border-top: none; }
-    .music-stat { padding: 24px 20px; border-right: 1px solid #1c1c1c; text-align: center; }
-    .music-stat:last-child { border-right: none; }
-    .mstat-num { font-family: 'Bebas Neue', sans-serif; font-size: 38px; color: #fff; line-height: 1; }
-    .mstat-rule { width: 20px; height: 1px; background: #fff; opacity: 0.08; margin: 8px auto; }
-    .mstat-lbl { font-size: 15px; color: #777; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.6; }
-    .quote-strip { border: 1px solid #1c1c1c; border-top: none; padding: 28px 36px; display: flex; align-items: flex-start; gap: 20px; }
-    .quote-vline { width: 1px; background: #ffffff14; align-self: stretch; flex-shrink: 0; }
-    .quote-text { font-size: 15px; color: #ccc; font-weight: 300; font-style: italic; line-height: 1.75; }
-    .quote-text strong { color: #c8b97a; font-style: normal; font-weight: 400; }
-    .quote-attr { font-size: 15px; color: #aaa; letter-spacing: 0.14em; text-transform: uppercase; margin-top: 10px; display: flex; align-items: center; gap: 8px; }
-    .quote-attr::before { content: ''; display: inline-block; width: 16px; height: 1px; background: #ffffff14; }
+    /* ── MUSIC (inverse) ── */
+    .music { background: var(--ink); color: var(--paper); padding: 88px 40px; border-bottom: 1px solid var(--edge); }
+        .music-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--edge); border-radius: var(--radius); background: var(--sheet); }
+    .music-left { padding: 42px 38px; border-right: 1px solid var(--line); }
+    .music-eyebrow { color: var(--ember); display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+    .music-h2 { font-size: clamp(40px, 5.5vw, 60px); text-transform: uppercase; margin-bottom: 20px; }
+    .music-h2 .e { color: var(--ember); }
+    .music-body { font-size: 15px; color: var(--ink-soft); max-width: 420px; margin-bottom: 32px; }
+    .music-body strong { color: var(--ink); font-weight: 600; }
+    .pain { padding: 26px 30px; border-bottom: 1px solid var(--line); display: flex; gap: 18px; }
+    .pain:last-child { border-bottom: none; }
+    .pain-num { color: var(--ember); flex-shrink: 0; padding-top: 3px; }
+    .pain-title { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 16px; margin-bottom: 5px; }
+    .pain-desc { font-size: 14px; color: var(--mute); }
+    .music-stats { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--edge); border-top: none; background: var(--sheet); border-radius: 0 0 var(--radius) var(--radius); }
+    .mstat { padding: 26px 20px; border-right: 1px solid var(--line); text-align: center; }
+    .mstat:last-child { border-right: none; }
+    .mstat-num { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 42px; line-height: 1; }
+    .mstat-lbl { color: var(--mute); margin-top: 10px; line-height: 1.6; }
 
     /* ── CTA ── */
-    .cta-section { padding: 96px 48px; text-align: center; border-bottom: 1px solid #1c1c1c; position: relative; overflow: hidden; }
-    .cta-bg { position: absolute; inset: 0; pointer-events: none; }
-    .cta-eyebrow { font-size: 15px; letter-spacing: 0.24em; text-transform: uppercase; color: #777; margin-bottom: 28px; display: flex; align-items: center; justify-content: center; gap: 12px; }
-    .cta-eyebrow::before, .cta-eyebrow::after { content: ''; display: inline-block; width: 40px; height: 1px; background: #fff; opacity: 0.08; }
-    .cta-section h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(44px, 7vw, 72px); color: #fff; line-height: 0.93; margin-bottom: 18px; }
-    .cta-section h2 .accent { color: #c8b97a; }
-    .cta-sub { font-size: 15px; color: #ccc; margin-bottom: 40px; font-weight: 300; line-height: 1.75; }
-    .cta-sub strong { color: #c8b97a; font-weight: 400; }
-    .waitlist-wrap { display: flex; gap: 8px; max-width: 460px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
-    .waitlist-input { flex: 1; min-width: 220px; background: #0e0e0e; border: 1px solid #1e1e1e; color: #f0ede6; font-family: 'DM Sans', sans-serif; font-size: 15px; padding: 13px 16px; border-radius: 0; outline: none; transition: border-color 0.2s; }
-    .waitlist-input:focus { border-color: #ccc; }
-    .waitlist-input::placeholder { color: #252525; }
-    .success-msg { display: none; font-size: 15px; color: #c8b97a; letter-spacing: 0.1em; margin-top: 16px; }
+    .cta { padding: 110px 40px; text-align: center; border-bottom: 1px solid var(--edge); position: relative; overflow: hidden; }
+    .cta-bg { position: absolute; inset: 0; pointer-events: none; opacity: 0.5; }
+    .cta h2 { font-size: clamp(46px, 7vw, 84px); text-transform: uppercase; margin-bottom: 18px; position: relative; }
+    .cta h2 .b { color: var(--blue); }
+    .cta-sub { font-size: 16px; color: var(--ink-soft); margin-bottom: 40px; position: relative; }
+    .cta-sub strong { color: var(--ink); font-weight: 600; }
+    .waitlist { max-width: 460px; margin: 56px auto 0; padding-top: 36px; border-top: 1px solid var(--line); position: relative; }
+    .waitlist-label { color: var(--mute); margin-bottom: 16px; }
+    .waitlist-wrap { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+    .waitlist-input { flex: 1; min-width: 220px; background: var(--sheet); border: 1px solid var(--edge); color: var(--ink); font-family: 'Instrument Sans', sans-serif; font-size: 15px; padding: 13px 16px; border-radius: var(--radius); outline: none; transition: border-color 0.15s; }
+    .waitlist-input:focus { border-color: var(--blue); }
+    .waitlist-input::placeholder { color: var(--mute); }
+    .success-msg { display: none; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: var(--blue); margin-top: 16px; }
 
     /* ── FOOTER ── */
-    footer { padding: 22px 48px; border-top: 1px solid #fff; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.14em; color: #aaa; }
-    .footer-links { display: flex; gap: 20px; list-style: none; }
-    .footer-links a { font-size: 14px; color: #aaa; text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
-    .footer-links a:hover { color: #444; }
-    .footer-note { font-size: 14px; color: #aaa; letter-spacing: 0.04em; }
+    footer { background: #070605; border-top: 1px solid var(--line); color: #8D897A; padding: 24px 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
+    .footer-logo { display: flex; align-items: center; gap: 10px; color: var(--ink); font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 15px; }
+    .footer-links { display: flex; gap: 22px; list-style: none; }
+    .footer-links a { font-size: 13px; color: #A9A697; text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--ink); }
+    .footer-note { font-size: 13px; }
+
+    /* ── MOTION SAFETY ── */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .draw path, .draw circle { animation: none; stroke-dashoffset: 0; }
+      .rise { animation: none; opacity: 1; transform: none; }
+      .ticker-track { animation: none; }
+      .kit, .chip { transition: none; }
+    }
 
     /* ── MOBILE ── */
-    @media (max-width: 680px) {
-      nav { padding: 16px 24px; }
-      .nav-right li:not(:last-child) { display: none; }
-      .hero { padding: 56px 24px 64px; min-height: auto; }
-      .hero-corner { display: none; }
-      .section { padding: 48px 24px; }
-      .music-section { padding: 48px 24px; }
-      .music-top { grid-template-columns: 1fr; }
-      .music-left { border-right: none; border-bottom: 1px solid #1c1c1c; }
-      .music-stat-row { grid-template-columns: 1fr; }
-      .music-stat { border-right: none; border-bottom: 1px solid #1c1c1c; }
-      .cta-section { padding: 64px 24px; }
-      footer { padding: 20px 24px; }
-      .how-grid { grid-template-columns: 1fr 1fr; }
-      .how-step { border-bottom: 1px solid #1c1c1c; }
+    @media (max-width: 760px) {
+      .app-wrap { padding: 12px 0; }
+    }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 40px; padding: 56px 24px 64px; min-height: auto; }
+      .how-grid, .vault-grid { grid-template-columns: 1fr 1fr; }
+      .how-step, .vault-feat { border-bottom: 1px solid var(--line); }
+      .kits-grid { grid-template-columns: 1fr; }
+      .kit-hero { grid-template-columns: 1fr; }
+      .kit-price-box { border-left: none; border-top: 1px solid var(--line); padding: 24px 0 0; text-align: left; }
+      .music-grid { grid-template-columns: 1fr; }
+      .vault-top { grid-template-columns: 1fr; gap: 28px; }
+      .merch { min-height: 440px; padding: 64px 24px; }
+      .merch-bg { object-position: 78% center; }
+      .music-left { border-right: none; border-bottom: 1px solid var(--line); }
+    }
+    @media (max-width: 620px) {
+      nav { padding: 14px 20px; }
+      .nav-links li:not(:last-child) { display: none; }
+      .section { padding: 56px 20px; }
+      .music { padding: 56px 20px; }
+      .cta { padding: 72px 20px; }
+      footer { padding: 22px 20px; }
+      .how-grid, .vault-grid { grid-template-columns: 1fr; }
+      .how-step, .vault-feat { border-right: none; }
+      .music-stats { grid-template-columns: 1fr; }
+      .mstat { border-right: none; border-bottom: 1px solid var(--line); }
+      .mstat:last-child { border-bottom: none; }
+      .specimen { transform: none; }
+      .spec-wordmark { font-size: 26px; }
     }
   </style>
 </head>
 <body>
 
+  <!-- svg defs: registration mark -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="regmark" viewBox="0 0 14 14">
+        <circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" stroke-width="1"/>
+        <line x1="7" y1="0" x2="7" y2="14" stroke="currentColor" stroke-width="1"/>
+        <line x1="0" y1="7" x2="14" y2="7" stroke="currentColor" stroke-width="1"/>
+      </symbol>
+    </defs>
+  </svg>
+
   <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo">WHITE LINE</a>
-    <ul class="nav-right">
+    <a href="#" class="nav-logo" aria-label="White Line Design home">
+      <svg class="reg" style="color:var(--blue)"><use href="#regmark"/></svg>
+      <span class="wl">WHITE LINE</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#app">The app</a></li>
       <li><a href="#how">How it works</a></li>
-      <li><a href="#vault">Brand Vault</a></li>
+      <li><a href="#work">Sample kits</a></li>
       <li><a href="#pricing">Pricing</a></li>
-      <li><a href="https://app.whitelinedesign.ai/sign-up" class="nav-cta">Launch App</a></li>
+      <li><a href="https://app.whitelinedesign.ai/sign-up" class="nav-cta">Launch app</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg">
-      <svg viewBox="0 0 800 520" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <line x1="0" y1="130" x2="800" y2="130" stroke="white" stroke-width="0.5" opacity="0.03"/>
-        <line x1="0" y1="260" x2="800" y2="260" stroke="white" stroke-width="0.5" opacity="0.025"/>
-        <line x1="0" y1="390" x2="800" y2="390" stroke="white" stroke-width="0.5" opacity="0.025"/>
-        <line x1="580" y1="0" x2="580" y2="520" stroke="white" stroke-width="0.5" opacity="0.04"/>
-        <line x1="660" y1="0" x2="660" y2="520" stroke="white" stroke-width="1" opacity="0.06"/>
-        <line x1="672" y1="0" x2="672" y2="520" stroke="white" stroke-width="0.5" opacity="0.025"/>
-        <circle cx="660" cy="260" r="150" fill="none" stroke="white" stroke-width="0.5" opacity="0.04"/>
-        <circle cx="660" cy="260" r="90" fill="none" stroke="white" stroke-width="0.5" opacity="0.03"/>
-        <circle cx="660" cy="260" r="40" fill="none" stroke="white" stroke-width="0.5" opacity="0.035"/>
-        <line x1="510" y1="260" x2="800" y2="260" stroke="white" stroke-width="0.5" opacity="0.03"/>
-        <line x1="660" y1="110" x2="660" y2="410" stroke="white" stroke-width="0.5" opacity="0.03"/>
-      </svg>
+  <header class="hero">
+    <div class="hero-video" aria-hidden="true">
+      <video id="hero-vid" autoplay muted loop playsinline preload="metadata" poster="hero-poster.jpg">
+        <source src="hero-road.mp4" type="video/mp4" />
+      </video>
     </div>
-    <div style="position:relative;">
-      <div class="hero-eyebrow">Brand OS for Small Business</div>
-      <h1>YOUR BRAND.<br><span class="accent">ONE PLACE.</span><br>EVERYWHERE.</h1>
-      <p class="hero-sub">Generate your identity with AI. Store every asset in your <strong>Brand Vault.</strong> Deploy to products, print, and marketing — in minutes.</p>
-      <div>
-        <a href="https://app.whitelinedesign.ai/sign-up" class="btn-primary">Start Free</a>
-        <a href="#how" class="btn-ghost">See How It Works</a>
+    <div>
+      <div class="hero-eyebrow rise rd1">
+        <svg class="reg"><use href="#regmark"/></svg>
+        <span class="mono">Brand OS for small business</span>
+      </div>
+      <h1 class="display">One line in.<br>A whole <span class="b">brand</span> out.</h1>
+      <p class="hero-sub rise rd1">Describe your business in a sentence. White Line drafts the logo, colors, type, and every file format — <strong>a complete brand kit you own forever.</strong></p>
+      <div class="hero-ctas rise rd1">
+        <a href="https://app.whitelinedesign.ai/sign-up" class="btn btn-ink">Start free</a>
+        <a href="#work" class="btn btn-line">See a sample kit</a>
+      </div>
+      <div class="hero-foot rise rd2">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="mono">5M+ sellers are trading without a real brand</span>
       </div>
     </div>
-    <div class="hero-corner">
-      <div class="corner-rule"></div>
-      <div class="corner-stat">
-        <div class="num">5M+</div>
-        <div class="lbl">Sellers without<br>a real brand</div>
+
+    <!-- SPECIMEN CARD — a brand kit assembling itself -->
+    <div class="specimen-wrap" aria-label="Sample brand kit specimen sheet">
+      <span class="cm tl"></span><span class="cm tr"></span><span class="cm bl"></span><span class="cm br"></span>
+      <div class="specimen">
+        <div class="spec-top">
+          <span class="mono">Brand kit — No. 0047</span>
+          <svg class="reg"><use href="#regmark"/></svg>
+        </div>
+        <div class="spec-logo-row">
+          <div class="spec-mark" aria-hidden="true">
+            <svg class="draw" viewBox="0 0 84 84" fill="none">
+              <circle cx="42" cy="42" r="38" stroke="var(--ink)" stroke-width="2" pathLength="1"/>
+              <path class="d2" d="M42 62 C30 54 27 45 32 37 C35 32 40 30 40 24 C46 28 44 34 48 38 C51 41 55 40 55 34 C60 42 56 55 42 62 Z" stroke="var(--blue)" stroke-width="2.5" stroke-linejoin="round" pathLength="1"/>
+              <path class="d3" d="M22 70 L62 70" stroke="var(--blue)" stroke-width="2" pathLength="1"/>
+            </svg>
+          </div>
+          <div class="rise rd2">
+            <div class="spec-wordmark display">Smoke &amp; Salt</div>
+            <div class="spec-tag">Texas-style barbecue truck — generated from one sentence</div>
+          </div>
+        </div>
+        <div class="spec-row rise rd3">
+          <span class="mono spec-label">Palette</span>
+          <div class="chips">
+            <button class="chip" data-hex="#1B1A14" style="background:#1B1A14" aria-label="Copy hex 1B1A14"><span class="tip">#1B1A14</span></button>
+            <button class="chip" data-hex="#F6790A" style="background:#F6790A" aria-label="Copy hex F6790A"><span class="tip">#F6790A</span></button>
+            <button class="chip" data-hex="#F0E4D0" style="background:#F0E4D0" aria-label="Copy hex F0E4D0"><span class="tip">#F0E4D0</span></button>
+            <button class="chip" data-hex="#D9A24B" style="background:#D9A24B" aria-label="Copy hex D9A24B"><span class="tip">#D9A24B</span></button>
+          </div>
+        </div>
+        <div class="spec-row rise rd4">
+          <span class="mono spec-label">Type</span>
+          <div class="spec-type">
+            <span class="aa display">Aa</span>
+            <span class="pair">Display + body pairing, ready to license</span>
+          </div>
+        </div>
+        <div class="spec-row rise rd4" style="border-bottom:none">
+          <span class="mono spec-label">Files</span>
+          <div class="tags">
+            <span class="tag mono hot">SVG</span>
+            <span class="tag mono">PNG</span>
+            <span class="tag mono">PDF</span>
+            <span class="tag mono">EPS</span>
+          </div>
+        </div>
+        <div class="spec-foot rise rd5">
+          <span class="mono">Stored in Brand Vault</span>
+          <span class="mono" style="color:var(--blue)">whitelinedesign.ai</span>
+        </div>
       </div>
-      <div class="corner-rule"></div>
     </div>
+  </header>
+
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <div class="ticker-item">
+        <span>Etsy sellers</span><svg class="reg"><use href="#regmark"/></svg>
+        <span>Independent bands</span><svg class="reg"><use href="#regmark"/></svg>
+        <span>Food trucks</span><svg class="reg"><use href="#regmark"/></svg>
+        <span>Shopify stores</span><svg class="reg"><use href="#regmark"/></svg>
+        <span>DJs &amp; producers</span><svg class="reg"><use href="#regmark"/></svg>
+        <span>Pop-up markets</span><svg class="reg"><use href="#regmark"/></svg>
+        <span>Local caf&eacute;s</span><svg class="reg"><use href="#regmark"/></svg>
+        <span>Podcasters</span><svg class="reg"><use href="#regmark"/></svg>
+        <span>Fitness coaches</span><svg class="reg"><use href="#regmark"/></svg>
+        <span>Creative studios</span><svg class="reg"><use href="#regmark"/></svg>
+      </div>
+      <div class="ticker-item">
+        <span>Etsy sellers</span><svg class="reg"><use href="#regmark"/></svg>
+        <span>Independent bands</span><svg class="reg"><use href="#regmark"/></svg>
+        <span>Food trucks</span><svg class="reg"><use href="#regmark"/></svg>
+        <span>Shopify stores</span><svg class="reg"><use href="#regmark"/></svg>
+        <span>DJs &amp; producers</span><svg class="reg"><use href="#regmark"/></svg>
+        <span>Pop-up markets</span><svg class="reg"><use href="#regmark"/></svg>
+        <span>Local caf&eacute;s</span><svg class="reg"><use href="#regmark"/></svg>
+        <span>Podcasters</span><svg class="reg"><use href="#regmark"/></svg>
+        <span>Fitness coaches</span><svg class="reg"><use href="#regmark"/></svg>
+        <span>Creative studios</span><svg class="reg"><use href="#regmark"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSIDE THE APP -->
+  <section class="section" id="app">
+    <div class="section-head">
+      <svg class="reg"><use href="#regmark"/></svg>
+      <span class="mono">Inside the app</span>
+      <span class="rule"></span>
+    </div>
+    <h2 class="h2 display">Your studio.<br><span class="b">One screen.</span></h2>
+    <p class="sub">Every brand, asset, and merch order lives in one Vault-backed workspace. This is the dashboard your first sign-in lands on.</p>
+
+    <div class="app-wrap">
+      <span class="cm tl"></span><span class="cm tr"></span><span class="cm bl"></span><span class="cm br"></span>
+      <div class="app-frame" role="img" aria-label="Preview of the White Line app dashboard">
+        <div class="app-chrome">
+          <div class="chrome-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="chrome-url mono">app.whitelinedesign.ai</div>
+        </div>
+        <img class="app-shot" src="app-dashboard.png" alt="White Line app dashboard showing the Prymid Co. and Pyramid Pizza brands, Vault stats, and quick actions" loading="lazy" />
+      </div>
+    </div>
+    <p class="app-caption mono">Actual product — not a mockup. <a href="https://app.whitelinedesign.ai/sign-up" style="color:var(--blue)">Open the real thing &rarr;</a></p>
   </section>
 
   <!-- HOW IT WORKS -->
   <section class="section" id="how">
-    <div class="section-label">How it works</div>
+    <div class="section-head">
+      <svg class="reg"><use href="#regmark"/></svg>
+      <span class="mono">How it works</span>
+      <span class="rule"></span>
+      <span class="mono">01 — 04</span>
+    </div>
     <div class="how-grid">
       <div class="how-step">
-        <div class="step-num">01</div>
+        <div class="step-num mono">Step 01</div>
         <div class="step-title">Describe your brand</div>
-        <div class="step-desc">Enter your business name, vibe, and any inspiration. Our AI generates a complete identity in seconds.</div>
+        <div class="step-desc">Your business name, your vibe, any inspiration. One sentence is enough to start drafting.</div>
       </div>
       <div class="how-step">
-        <div class="step-num">02</div>
+        <div class="step-num mono">Step 02</div>
         <div class="step-title">Brand Vault created</div>
         <div class="step-desc">Logo files, hex codes, fonts, and a shareable style guide — organized and stored automatically.</div>
       </div>
       <div class="how-step">
-        <div class="step-num">03</div>
+        <div class="step-num mono">Step 03</div>
         <div class="step-title">Deploy to any product</div>
         <div class="step-desc">Apply your brand to t-shirts, stickers, cards, and more. One click — shipped to your door.</div>
       </div>
       <div class="how-step">
-        <div class="step-num">04</div>
+        <div class="step-num mono">Step 04</div>
         <div class="step-title">Stay consistent forever</div>
-        <div class="step-desc">Every future asset pulls from your Brand Vault. No more hunting for the right logo file.</div>
+        <div class="step-desc">Every future asset pulls from your Vault. No more hunting for the right logo file.</div>
       </div>
+    </div>
+  </section>
+
+  <!-- SAMPLE KITS -->
+  <section class="section" id="work">
+    <div class="section-head">
+      <svg class="reg"><use href="#regmark"/></svg>
+      <span class="mono">Sample kits</span>
+      <span class="rule"></span>
+    </div>
+    <h2 class="h2 display">The proof is <span class="b">printed.</span></h2>
+    <p class="sub">Three sample identities, each generated from a single sentence. Every one exports print-ready — vector files, exact hex values, a full style guide.</p>
+    <div class="kits-grid">
+      <div class="kit">
+        <div class="kit-no"><span class="mono">Kit No. 0031</span><span class="mono">Band</span></div>
+        <div class="kit-name display" style="letter-spacing:0.04em">Paper<br>Motel</div>
+        <div class="kit-vibe">Indie rock four-piece — posters, tees, and a press kit that finally match</div>
+        <div class="kit-chips">
+          <span class="chip" style="background:#15172B"></span>
+          <span class="chip" style="background:#E8E4D6"></span>
+          <span class="chip" style="background:#F6790A"></span>
+        </div>
+        <div class="kit-tags">
+          <span class="tag mono">Gig poster</span><span class="tag mono">Tee</span><span class="tag mono">Spotify canvas</span>
+        </div>
+      </div>
+      <div class="kit">
+        <div class="kit-no"><span class="mono">Kit No. 0018</span><span class="mono">Etsy shop</span></div>
+        <div class="kit-name display" style="font-weight:600; text-transform:none">Loose<br>Thread</div>
+        <div class="kit-vibe">Hand-embroidery studio — packaging, thank-you cards, and shop banner in one pass</div>
+        <div class="kit-chips">
+          <span class="chip" style="background:#76825F"></span>
+          <span class="chip" style="background:#F3EDDF"></span>
+          <span class="chip" style="background:#B2502E"></span>
+        </div>
+        <div class="kit-tags">
+          <span class="tag mono">Sticker sheet</span><span class="tag mono">Shop banner</span><span class="tag mono">Card</span>
+        </div>
+      </div>
+      <div class="kit">
+        <div class="kit-no"><span class="mono">Kit No. 0047</span><span class="mono">Food truck</span></div>
+        <div class="kit-name display">Smoke<br>&amp; Salt</div>
+        <div class="kit-vibe">Texas-style barbecue truck — the kit assembling itself at the top of this page</div>
+        <div class="kit-chips">
+          <span class="chip" style="background:#1B1A14"></span>
+          <span class="chip" style="background:#F6790A"></span>
+          <span class="chip" style="background:#F0E4D0"></span>
+        </div>
+        <div class="kit-tags">
+          <span class="tag mono">Menu board</span><span class="tag mono">Truck wrap</span><span class="tag mono">Cap</span>
+        </div>
+      </div>
+    </div>
+    <p class="kits-note mono">Sample kits shown were generated with White Line — yours takes about two minutes.</p>
+  </section>
+
+  <!-- MERCH BAND -->
+  <section class="merch">
+    <img class="merch-bg" src="merch-banner.jpg" alt="Black coffee mug, branded sticker sheets, and White Line Design pens on a dark table" loading="lazy" />
+    <div class="merch-inner">
+      <div class="merch-eyebrow mono">
+        <svg class="reg"><use href="#regmark"/></svg>
+        From Vault to table
+      </div>
+      <h2 class="display">Your brand,<br>in your <span class="b">hands.</span></h2>
+      <p>Apply any brand in your Vault to stickers, pens, tees, and posters — no minimum orders, shipped to your door.</p>
+      <a href="https://app.whitelinedesign.ai/sign-up" class="btn btn-ink">Order merch</a>
     </div>
   </section>
 
   <!-- BRAND VAULT -->
   <section class="section" id="vault">
-    <div class="section-label">Brand Vault</div>
-    <div class="section-h2">YOUR ASSETS.<br><span class="accent">ALWAYS READY.</span></div>
-    <p class="section-sub">One source of truth for every file, color, and font. Stop emailing yourself logos and losing hex codes in old Slack threads.</p>
+    <div class="section-head">
+      <svg class="reg"><use href="#regmark"/></svg>
+      <span class="mono">Brand Vault</span>
+      <span class="rule"></span>
+    </div>
+    <div class="vault-top">
+      <div>
+        <h2 class="h2 display">Your assets.<br><span class="b">Always ready.</span></h2>
+        <p class="sub" style="margin-bottom:28px">One source of truth for every file, color, and font. Stop emailing yourself logos and losing hex codes in old threads.</p>
+        <a href="https://app.whitelinedesign.ai/sign-up" class="btn btn-line">Open your Vault</a>
+      </div>
+      <div class="photo-wrap">
+        <span class="cm tl"></span><span class="cm tr"></span><span class="cm bl"></span><span class="cm br"></span>
+        <img class="photo" src="vault-highway.jpg" alt="Brand Vault illustrated as a black and gold safe with a highway and white center line leading out of it" loading="lazy" />
+      </div>
+    </div>
     <div class="vault-grid">
       <div class="vault-feat">
-        <div class="vault-feat-icon"><i class="ti ti-archive"></i></div>
-        <div class="vault-feat-title">Every file format</div>
-        <div class="vault-feat-desc">SVG, PNG, PDF — auto-generated and ready to send to any printer, platform, or freelancer.</div>
+        <div class="vault-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M3 7l2-4h14l2 4M12 11v5M9.5 13.5L12 16l2.5-2.5"/></svg>
+        </div>
+        <div class="vault-title">Every file format</div>
+        <div class="vault-desc">SVG, PNG, PDF — auto-generated and ready to send to any printer, platform, or freelancer.</div>
       </div>
       <div class="vault-feat">
-        <div class="vault-feat-icon"><i class="ti ti-palette"></i></div>
-        <div class="vault-feat-title">Style guide</div>
-        <div class="vault-feat-desc">Auto-generated brand guide with a shareable link — hand it to any freelancer instantly.</div>
+        <div class="vault-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+        </div>
+        <div class="vault-title">Style guide</div>
+        <div class="vault-desc">Auto-generated brand guide with a shareable link — hand it to any freelancer instantly.</div>
       </div>
       <div class="vault-feat">
-        <div class="vault-feat-icon"><i class="ti ti-history"></i></div>
-        <div class="vault-feat-title">Version history</div>
-        <div class="vault-feat-desc">Track every logo version. Roll back, branch, or evolve your brand over time.</div>
+        <div class="vault-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4l3 2"/><path d="M3.5 12a8.5 8.5 0 1 0 2-5.5"/><path d="M3.5 4v3.5H7"/></svg>
+        </div>
+        <div class="vault-title">Version history</div>
+        <div class="vault-desc">Track every logo version. Roll back, branch, or evolve your brand over time.</div>
       </div>
       <div class="vault-feat">
-        <div class="vault-feat-icon"><i class="ti ti-users"></i></div>
-        <div class="vault-feat-title">Team access</div>
-        <div class="vault-feat-desc">Share with your VA or social manager — no more emailing files back and forth.</div>
+        <div class="vault-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><circle cx="17.5" cy="9.5" r="2.5"/><path d="M16 14.8c2.6.3 4.6 2 5.5 5.2"/></svg>
+        </div>
+        <div class="vault-title">Team access</div>
+        <div class="vault-desc">Share with your VA or social manager — no more emailing files back and forth.</div>
       </div>
     </div>
   </section>
 
   <!-- PRICING -->
   <section class="section" id="pricing">
-    <div class="section-label">Pricing</div>
-    <div class="section-h2">START HOW<br>YOU <span class="accent">WANT.</span></div>
-    <p class="section-sub">Buy the Brand Kit once, or subscribe for ongoing brand tools. Cancel anytime.</p>
+    <div class="section-head">
+      <svg class="reg"><use href="#regmark"/></svg>
+      <span class="mono">Pricing</span>
+      <span class="rule"></span>
+    </div>
+    <h2 class="h2 display">Start how<br>you <span class="b">want.</span></h2>
+    <p class="sub">Buy the Brand Kit once, or subscribe for ongoing brand tools. Cancel anytime.</p>
 
-    <!-- Brand Kit one-time -->
-    <div style="border: 1px solid #c8b97a55; background: linear-gradient(135deg, #c8b97a0d 0%, transparent 60%); padding: 32px 28px; margin-bottom: 32px; position: relative; overflow: hidden;">
-      <div style="position: absolute; top: 0; left: 0; right: 0; height: 1px; background: #c8b97a55;"></div>
-      <div style="display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center;">
-        <div>
-          <div style="font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: #c8b97a; margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
-            <span style="display: inline-block; width: 16px; height: 1px; background: #c8b97a;"></span>
-            One-time purchase · No subscription
-          </div>
-          <div style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: #fff; line-height: 1; margin-bottom: 10px;">THE BRAND KIT</div>
-          <p style="font-size: 14px; color: #999; line-height: 1.7; margin-bottom: 16px; max-width: 460px; font-weight: 300;">
-           Generate your logo, get every format including true vector SVG and EPS, plus a full brand style guide. Own it forever — no monthly fees.
-          </p>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; max-width: 460px;">
-            <div style="font-size: 13px; color: #bbb; display: flex; gap: 8px;"><span style="color: #c8b97a;">—</span>Unlimited logo generations</div>
-            <div style="font-size: 13px; color: #bbb; display: flex; gap: 8px;"><span style="color: #c8b97a;">—</span>PNG, true vector SVG, PDF, EPS</div>
-            <div style="font-size: 13px; color: #bbb; display: flex; gap: 8px;"><span style="color: #c8b97a;">—</span>Logo variants + brand kit</div>
-            <div style="font-size: 13px; color: #bbb; display: flex; gap: 8px;"><span style="color: #c8b97a;">—</span>Full style guide</div>
-            <div style="font-size: 13px; color: #bbb; display: flex; gap: 8px;"><span style="color: #c8b97a;">—</span>5 AI upscales included</div>
-            <div style="font-size: 13px; color: #bbb; display: flex; gap: 8px;"><span style="color: #c8b97a;">—</span>Yours forever</div>
-          </div>
+    <div class="kit-hero">
+      <div>
+        <div class="kit-hero-eyebrow mono">
+          <svg class="reg"><use href="#regmark"/></svg>
+          One-time purchase — no subscription
         </div>
-        <div style="text-align: right; border-left: 1px solid #1c1c1c; padding-left: 32px;">
-          <div style="font-family: 'Bebas Neue', sans-serif; font-size: 56px; color: #fff; line-height: 1;">$79</div>
-          <div style="font-size: 11px; color: #666; letter-spacing: 0.1em; margin-bottom: 18px;">one-time</div>
-          <a href="https://app.whitelinedesign.ai/sign-up" style="display: inline-block; background: #c8b97a; color: #080808; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 13px 26px; text-decoration: none; white-space: nowrap;">Get the Kit →</a>
+        <div class="kit-hero-name display">The Brand Kit</div>
+        <p class="kit-hero-desc">Generate your logo, get every format including true vector SVG and EPS, plus a full brand style guide. Own it forever — no monthly fees.</p>
+        <div class="kit-feats">
+          <div class="kit-feat">Unlimited logo generations</div>
+          <div class="kit-feat">PNG, true vector SVG, PDF, EPS</div>
+          <div class="kit-feat">Logo variants + brand kit</div>
+          <div class="kit-feat">Full style guide</div>
+          <div class="kit-feat">5 AI upscales included</div>
+          <div class="kit-feat">Yours forever</div>
         </div>
+      </div>
+      <div class="kit-price-box">
+        <div class="kit-price display">$79</div>
+        <div class="kit-price-note mono">one-time</div>
+        <a href="https://app.whitelinedesign.ai/sign-up" class="btn btn-ink">Get the Kit &rarr;</a>
       </div>
     </div>
 
-    <div style="text-align: center; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #555; margin: 32px 0 24px; display: flex; align-items: center; gap: 16px;">
-      <span style="flex: 1; height: 1px; background: #1c1c1c;"></span>
-      Or subscribe for ongoing tools
-      <span style="flex: 1; height: 1px; background: #1c1c1c;"></span>
-    </div>
+    <div class="or-rule"><span class="rule"></span><span class="mono">Or subscribe for ongoing tools</span><span class="rule"></span></div>
 
     <div class="plans-grid">
-      <div class="plan-card">
+      <div class="plan">
         <div class="plan-name">Starter</div>
         <div class="plan-price">$19<span> /mo</span></div>
-        <div class="plan-divider"></div>
+        <div class="plan-div"></div>
         <div class="plan-feature on">AI logo generation</div>
         <div class="plan-feature on">1 Brand Vault</div>
         <div class="plan-feature on">PNG downloads</div>
@@ -329,205 +689,193 @@
         <div class="plan-feature">SVG + PDF formats</div>
         <div class="plan-feature">Merch ordering</div>
       </div>
-      <div class="plan-card featured">
-        <div class="plan-badge">Most popular</div>
+      <div class="plan featured">
+        <div class="plan-badge mono">Most popular</div>
         <div class="plan-name">Builder</div>
         <div class="plan-price">$49<span> /mo</span></div>
-        <div class="plan-divider"></div>
+        <div class="plan-div"></div>
         <div class="plan-feature on">Everything in Starter</div>
         <div class="plan-feature on">3 brands + full brand kit</div>
         <div class="plan-feature on">Merch ordering + mockups</div>
         <div class="plan-feature on">10 brand assets / month</div>
-        <div class="plan-feature on">25 AI upscales (incl. 4×)</div>
+        <div class="plan-feature on">25 AI upscales (incl. 4&times;)</div>
         <div class="plan-feature on">SVG + PDF formats</div>
         <div class="plan-feature on">Version history</div>
       </div>
-      <div class="plan-card">
+      <div class="plan">
         <div class="plan-name">Pro</div>
         <div class="plan-price">$99<span> /mo</span></div>
-        <div class="plan-divider"></div>
+        <div class="plan-div"></div>
         <div class="plan-feature on">Everything in Builder</div>
         <div class="plan-feature on">Unlimited brands</div>
         <div class="plan-feature on">50 brand assets / month</div>
-        <div class="plan-feature on">50 AI upscales (incl. 4×)</div>
+        <div class="plan-feature on">50 AI upscales (incl. 4&times;)</div>
         <div class="plan-feature on">True vector SVG + EPS</div>
         <div class="plan-feature on">Unlimited merch orders</div>
         <div class="plan-feature on">Priority generation</div>
       </div>
     </div>
-
-    <p style="text-align: center; font-size: 12px; color: #666; margin-top: 24px; font-weight: 300;">
-      Subscriptions include a 7-day free trial · Every plan includes the AI brand assistant
-    </p>
+    <p class="pricing-note">Subscriptions include a 7-day free trial &middot; Every plan includes the AI brand assistant</p>
   </section>
 
-  <!-- NICHE -->
-  <section class="section">
-    <div class="section-label">Built for</div>
-    <div class="section-h2">YOUR <span class="accent">NICHE.</span></div>
-    <p class="section-sub">Built for independent sellers, creators, and artists — not enterprise teams with a design department.</p>
-    <div class="niche-tag-row">
-      <div class="niche-tag launch">Etsy sellers</div>
-      <div class="niche-tag launch">Shopify stores</div>
-      <div class="niche-tag music">Independent bands</div>
-      <div class="niche-tag music">DJs &amp; producers</div>
-      <div class="niche-tag active">Food trucks</div>
-      <div class="niche-tag active">Pop-up markets</div>
-      <div class="niche-tag active">Fitness coaches</div>
-      <div class="niche-tag active">Real estate agents</div>
-      <div class="niche-tag active">Local cafés</div>
-      <div class="niche-tag active">Creative studios</div>
-      <div class="niche-tag active">Podcasters</div>
+  <!-- MUSIC VERTICAL -->
+  <section class="music">
+    <div class="section-head">
+      <svg class="reg"><use href="#regmark"/></svg>
+      <span class="mono">For musicians &amp; artists</span>
+      <span class="rule"></span>
     </div>
-    <p class="niche-note">Launching with Etsy + Shopify sellers — 5M+ active US stores. <span>Music &amp; creator verticals coming soon.</span></p>
-  </section>
-
-  <!-- MUSIC SECTION -->
-  <section class="music-section">
-    <div class="music-bg">
-      <svg viewBox="0 0 800 640" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="686" cy="320" r="180" fill="none" stroke="white" stroke-width="0.5" opacity="0.03"/>
-        <circle cx="686" cy="320" r="110" fill="none" stroke="white" stroke-width="0.5" opacity="0.025"/>
-        <circle cx="686" cy="320" r="50" fill="none" stroke="white" stroke-width="0.5" opacity="0.03"/>
-        <line x1="506" y1="320" x2="800" y2="320" stroke="white" stroke-width="0.5" opacity="0.025"/>
-        <line x1="686" y1="140" x2="686" y2="500" stroke="white" stroke-width="0.5" opacity="0.025"/>
-      </svg>
-    </div>
-    <div style="position:relative;">
-      <div class="section-label">For musicians &amp; artists</div>
-      <div class="music-top">
-        <div class="music-left">
-          <div class="music-eyebrow">New vertical</div>
-          <div class="music-h2">YOUR BAND.<br>A REAL <span class="accent">BRAND.</span></div>
-          <p class="music-body">Independent artists pour everything into their sound — then hand out a <strong>blurry PNG someone made in 2019.</strong> White Line gives your band a living brand identity that travels from Spotify to the merch table without losing a pixel.</p>
+    <div class="music-grid">
+      <div class="music-left">
+        <div class="music-eyebrow mono">
+          <svg class="reg"><use href="#regmark"/></svg>
+          New vertical
+        </div>
+        <h2 class="music-h2 display">Your band.<br>A real <span class="e">brand.</span></h2>
+        <p class="music-body">Independent artists pour everything into their sound — then hand out a <strong>blurry PNG someone made in 2019.</strong> White Line gives your band a living identity that travels from Spotify to the merch table without losing a pixel.</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap">
+          <a href="https://app.whitelinedesign.ai/sign-up" class="btn btn-ink">Start free</a>
+          <a href="#how" class="btn btn-line">See how it works</a>
+        </div>
+      </div>
+      <div>
+        <div class="pain">
+          <div class="pain-num mono">01</div>
           <div>
-            <a href="https://app.whitelinedesign.ai/sign-up" class="btn-primary">Start Free</a>
-            <a href="#how" class="btn-ghost">See how it works</a>
+            <div class="pain-title">The logo lives on one person's laptop</div>
+            <div class="pain-desc">Every merch drop, poster, or press kit starts with "hey who has the logo?" White Line ends that conversation.</div>
           </div>
         </div>
-        <div class="music-right">
-          <div class="pain-item">
-            <div class="pain-num">01</div>
-            <div>
-              <div class="pain-title">The logo lives on one person's laptop</div>
-              <div class="pain-desc">Every merch drop, poster, or press kit starts with "hey who has the logo?" White Line ends that conversation.</div>
-            </div>
+        <div class="pain">
+          <div class="pain-num mono">02</div>
+          <div>
+            <div class="pain-title">Merch takes weeks and a minimum order</div>
+            <div class="pain-desc">No MOQ. No turnaround drama. Apply your brand to tees, stickers, and posters — one at a time if you need.</div>
           </div>
-          <div class="pain-item">
-            <div class="pain-num">02</div>
-            <div>
-              <div class="pain-title">Merch takes weeks and a minimum order</div>
-              <div class="pain-desc">No MOQ. No turnaround drama. Apply your brand to tees, stickers, and posters — one at a time if you need.</div>
-            </div>
-          </div>
-          <div class="pain-item">
-            <div class="pain-num">03</div>
-            <div>
-              <div class="pain-title">Every platform looks completely different</div>
-              <div class="pain-desc">Your Brand Vault exports to Spotify canvas, Instagram, press kit, and print — consistent, every time.</div>
-            </div>
+        </div>
+        <div class="pain">
+          <div class="pain-num mono">03</div>
+          <div>
+            <div class="pain-title">Every platform looks completely different</div>
+            <div class="pain-desc">Your Brand Vault exports to Spotify canvas, Instagram, press kit, and print — consistent, every time.</div>
           </div>
         </div>
       </div>
-      <div class="music-stat-row">
-        <div class="music-stat">
-          <div class="mstat-num">4M+</div>
-          <div class="mstat-rule"></div>
-          <div class="mstat-lbl">Independent artists<br>on Spotify alone</div>
-        </div>
-        <div class="music-stat">
-          <div class="mstat-num">$1.5B</div>
-          <div class="mstat-rule"></div>
-          <div class="mstat-lbl">Indie merch market<br>annually</div>
-        </div>
-        <div class="music-stat">
-          <div class="mstat-num">$0</div>
-          <div class="mstat-rule"></div>
-          <div class="mstat-lbl">Budget for a<br>designer on retainer</div>
-        </div>
+    </div>
+    <div class="music-stats">
+      <div class="mstat">
+        <div class="mstat-num">4M+</div>
+        <div class="mstat-lbl mono">Independent artists<br>on Spotify alone</div>
       </div>
-      <div class="quote-strip">
-        <div class="quote-vline"></div>
-        <div>
-          <div class="quote-text">The target customer is every band that ever played a show and thought — <strong>we really need to get our merch together.</strong></div>
-          <div class="quote-attr">White Line Design positioning</div>
-        </div>
+      <div class="mstat">
+        <div class="mstat-num">$1.5B</div>
+        <div class="mstat-lbl mono">Indie merch market<br>annually</div>
+      </div>
+      <div class="mstat">
+        <div class="mstat-num">$0</div>
+        <div class="mstat-lbl mono">Budget for a designer<br>on retainer</div>
       </div>
     </div>
   </section>
 
-  <!-- CTA / LAUNCH -->
-  <section class="cta-section" id="waitlist">
-    <div class="cta-bg">
-      <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="400" cy="200" r="160" fill="none" stroke="white" stroke-width="0.5" opacity="0.03"/>
-        <circle cx="400" cy="200" r="220" fill="none" stroke="white" stroke-width="0.5" opacity="0.02"/>
-        <line x1="0" y1="200" x2="800" y2="200" stroke="white" stroke-width="0.5" opacity="0.025"/>
-        <line x1="400" y1="0" x2="400" y2="400" stroke="white" stroke-width="0.5" opacity="0.025"/>
-        <line x1="160" y1="0" x2="640" y2="400" stroke="white" stroke-width="0.5" opacity="0.02"/>
-        <line x1="640" y1="0" x2="160" y2="400" stroke="white" stroke-width="0.5" opacity="0.02"/>
+  <!-- CTA / WAITLIST -->
+  <section class="cta" id="waitlist">
+    <div class="cta-bg" aria-hidden="true">
+      <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+        <circle cx="400" cy="200" r="170" fill="none" stroke="#F2EFE3" stroke-width="0.5" opacity="0.1"/>
+        <circle cx="400" cy="200" r="240" fill="none" stroke="#F2EFE3" stroke-width="0.5" opacity="0.07"/>
+        <line x1="0" y1="200" x2="800" y2="200" stroke="#F2EFE3" stroke-width="0.5" opacity="0.09"/>
+        <line x1="400" y1="0" x2="400" y2="400" stroke="#F2EFE3" stroke-width="0.5" opacity="0.09"/>
       </svg>
     </div>
-    <div style="position:relative;">
-      <div class="cta-eyebrow">Now Live</div>
-      <h2>READY TO OWN<br>YOUR <span class="accent">BRAND?</span></h2>
-      <p class="cta-sub">Generate your logo in minutes. <strong>7-day free trial · No credit card required.</strong></p>
-      <div style="margin-bottom: 40px;">
-        <a href="https://app.whitelinedesign.ai/sign-up" class="btn-primary" style="font-size: 16px; padding: 16px 36px;">Start Free →</a>
+    <div class="cta-eyebrow mono" style="color:var(--blue); margin-bottom:24px; position:relative">Now live</div>
+    <h2 class="display">Ready to own<br>your <span class="b">brand?</span></h2>
+    <p class="cta-sub">Generate your logo in minutes. <strong>7-day free trial &middot; No credit card required.</strong></p>
+    <div style="position:relative">
+      <a href="https://app.whitelinedesign.ai/sign-up" class="btn btn-ink" style="font-size:16px; padding:17px 38px">Start free &rarr;</a>
+    </div>
+    <div class="waitlist">
+      <p class="waitlist-label mono">Not ready? Get updates</p>
+      <div class="waitlist-wrap">
+        <input class="waitlist-input" type="email" placeholder="your@email.com" id="wl-email" aria-label="Email address" />
+        <button class="btn btn-line" id="wl-btn" style="padding:13px 24px">Notify me</button>
       </div>
-      <div style="max-width: 460px; margin: 0 auto; padding-top: 32px; border-top: 1px solid #1c1c1c;">
-        <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #555; margin-bottom: 16px;">Not ready? Get updates</p>
-        <div class="waitlist-wrap">
-          <input class="waitlist-input" type="email" placeholder="your@email.com" id="wl-email" />
-          <button class="btn-ghost" id="wl-btn" style="margin: 0;">Notify me</button>
-        </div>
-        <p class="success-msg" id="wl-success">— You're on the list. We'll be in touch.</p>
-      </div>
+      <p class="success-msg" id="wl-success">&mdash; You're on the list. We'll be in touch.</p>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-logo">White Line Design</div>
+    <div class="footer-logo">
+      <svg class="reg" style="color:var(--ember)"><use href="#regmark"/></svg>
+      WHITE LINE DESIGN
+    </div>
     <ul class="footer-links">
       <li><a href="#">Privacy</a></li>
       <li><a href="#">Terms</a></li>
       <li><a href="https://whitelinedesign.ai">whitelinedesign.ai</a></li>
       <li><a href="mailto:info@whitelinedesign.ai">Contact</a></li>
     </ul>
-    <div class="footer-note">© 2026 White Line Design LLC</div>
+    <div class="footer-note">&copy; 2026 White Line Design LLC</div>
   </footer>
 
   <script>
-  document.getElementById('wl-btn').addEventListener('click', function () {
-    var emailEl = document.getElementById('wl-email');
-    var email = emailEl.value.trim();
-    if (!email || !email.includes('@')) {
-      emailEl.focus();
-      emailEl.style.borderColor = '#555';
-      return;
-    }
-    var btn = this;
-    btn.disabled = true;
-    btn.textContent = 'Adding you...';
-    btn.style.opacity = '0.7';
-    var cbName = 'mc' + Date.now();
-    window[cbName] = function() { delete window[cbName]; };
-    var s = document.createElement('script');
-    s.src = 'https://whitelinedesign.us4.list-manage.com/subscribe/post-json?u=3d9a7ea957cf25aa0698f7510&id=7614aa4012&f_id=00d71deaf0&EMAIL=' + encodeURIComponent(email) + '&c=' + cbName;
-    document.head.appendChild(s);
-    setTimeout(function() {
-      emailEl.value = '';
-      emailEl.style.borderColor = '#c8b97a22';
-      document.getElementById('wl-success').style.display = 'block';
-      btn.textContent = "You're in";
-      btn.style.opacity = '0.4';
-    }, 1000);
-  });
-  document.getElementById('wl-email').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') document.getElementById('wl-btn').click();
-  });
-</script>
+    // Waitlist (Mailchimp JSONP — same list as before)
+    document.getElementById('wl-btn').addEventListener('click', function () {
+      var emailEl = document.getElementById('wl-email');
+      var email = emailEl.value.trim();
+      if (!email || !email.includes('@')) {
+        emailEl.focus();
+        emailEl.style.borderColor = 'var(--ember)';
+        return;
+      }
+      var btn = this;
+      btn.disabled = true;
+      btn.textContent = 'Adding you...';
+      btn.style.opacity = '0.7';
+      var cbName = 'mc' + Date.now();
+      window[cbName] = function () { delete window[cbName]; };
+      var s = document.createElement('script');
+      s.src = 'https://whitelinedesign.us4.list-manage.com/subscribe/post-json?u=3d9a7ea957cf25aa0698f7510&id=7614aa4012&f_id=00d71deaf0&EMAIL=' + encodeURIComponent(email) + '&c=' + cbName;
+      document.head.appendChild(s);
+      setTimeout(function () {
+        emailEl.value = '';
+        emailEl.style.borderColor = 'var(--blue)';
+        document.getElementById('wl-success').style.display = 'block';
+        btn.textContent = "You're in";
+        btn.style.opacity = '0.4';
+      }, 1000);
+    });
+    document.getElementById('wl-email').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') document.getElementById('wl-btn').click();
+    });
+
+    // Respect reduced motion: hold the hero video on its poster frame
+    (function () {
+      var v = document.getElementById('hero-vid');
+      if (v && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        v.removeAttribute('autoplay');
+        v.pause();
+      }
+    })();
+
+    // Click-to-copy hex chips in the hero specimen
+    document.querySelectorAll('.chip[data-hex]').forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var hex = chip.getAttribute('data-hex');
+        var tip = chip.querySelector('.tip');
+        function done() {
+          if (tip) { tip.textContent = 'Copied'; chip.classList.add('copied'); }
+          setTimeout(function () {
+            if (tip) { tip.textContent = hex; chip.classList.remove('copied'); }
+          }, 1200);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(hex).then(done, done);
+        } else { done(); }
+      });
+    });
+  </script>
 
 </body>
 </html>

@@ -79,7 +79,7 @@
     .kit:hover { box-shadow: 5px 8px 0 #F6790A26, 0 18px 44px #00000080; }
 
     /* ── HERO ── */
-    .hero { position: relative; padding: 108px 40px 120px; border-bottom: 1px solid var(--ink); display: grid; grid-template-columns: 1fr; align-items: center; min-height: min(86vh, 860px); }
+    .hero { position: relative; padding: 108px 40px 120px; border-bottom: 1px solid var(--ink); display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; min-height: min(86vh, 860px); }
     .hero h1 { font-size: clamp(52px, 7.2vw, 96px); text-transform: uppercase; margin: 20px 0 24px; text-shadow: 0 2px 30px rgba(0,0,0,0.75); }
     .hero h1 .b { color: var(--blue); }
     .hero-eyebrow { display: flex; align-items: center; gap: 10px; color: var(--mute); }
@@ -320,6 +320,7 @@
     }
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; gap: 40px; padding: 56px 24px 64px; min-height: auto; }
+      .specimen-wrap { padding: 0; }
       .how-grid, .vault-grid { grid-template-columns: 1fr 1fr; }
       .how-step, .vault-feat { border-bottom: 1px solid var(--line); }
       .kits-grid { grid-template-columns: 1fr; }
@@ -402,6 +403,51 @@
       <div class="hero-foot rise rd2">
         <span class="dot" aria-hidden="true"></span>
         <span class="mono">5M+ sellers are trading without a real brand</span>
+      </div>
+    </div>
+
+    <!-- LIVE SPECIMEN — sketches the visitor's brand as they type -->
+    <div class="specimen-wrap rise rd2" aria-live="polite">
+      <span class="cm tl"></span><span class="cm tr"></span><span class="cm bl"></span><span class="cm br"></span>
+      <div class="specimen">
+        <div class="spec-top">
+          <span class="mono" id="live-kitno">Brand kit — No. 0001</span>
+          <svg class="reg"><use href="#regmark"/></svg>
+        </div>
+        <div class="spec-logo-row">
+          <div class="spec-mark" aria-hidden="true">
+            <svg viewBox="0 0 84 84" fill="none">
+              <circle cx="42" cy="42" r="38" stroke="var(--ink)" stroke-width="2"/>
+              <text id="live-initial" x="42" y="56" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="40" fill="var(--ink)">W</text>
+            </svg>
+          </div>
+          <div>
+            <div class="spec-wordmark display" id="live-wordmark">Your Brand</div>
+            <div class="spec-tag">Instant sketch — the full kit is drafted in the app</div>
+          </div>
+        </div>
+        <div class="spec-row">
+          <span class="mono spec-label">Palette</span>
+          <div class="chips" id="live-chips">
+            <button class="chip" data-hex="#1B1A14" style="background:#1B1A14" aria-label="Copy hex"><span class="tip">#1B1A14</span></button>
+            <button class="chip" data-hex="#F6790A" style="background:#F6790A" aria-label="Copy hex"><span class="tip">#F6790A</span></button>
+            <button class="chip" data-hex="#F0E4D0" style="background:#F0E4D0" aria-label="Copy hex"><span class="tip">#F0E4D0</span></button>
+            <button class="chip" data-hex="#D9A24B" style="background:#D9A24B" aria-label="Copy hex"><span class="tip">#D9A24B</span></button>
+          </div>
+        </div>
+        <div class="spec-row" style="border-bottom:none">
+          <span class="mono spec-label">Files</span>
+          <div class="tags">
+            <span class="tag mono hot">SVG</span>
+            <span class="tag mono">PNG</span>
+            <span class="tag mono">PDF</span>
+            <span class="tag mono">EPS</span>
+          </div>
+        </div>
+        <div class="spec-foot">
+          <span class="mono">Type your name to sketch it</span>
+          <a class="mono" id="live-claim" href="https://app.whitelinedesign.ai/sign-up" style="color:var(--blue); text-decoration:none">Claim this kit &rarr;</a>
+        </div>
       </div>
     </div>
 
@@ -812,14 +858,49 @@
     (function () {
       var input = document.getElementById('gen-name');
       var btn = document.getElementById('gen-btn');
-      function go() {
+      function target() {
         var v = input.value.trim();
         var url = 'https://app.whitelinedesign.ai/sign-up';
         if (v) url += '?brand=' + encodeURIComponent(v);
-        window.location.href = url;
+        return url;
       }
+      function go() { window.location.href = target(); }
       btn.addEventListener('click', go);
       input.addEventListener('keydown', function (e) { if (e.key === 'Enter') go(); });
+
+      // live specimen sketch
+      var palettes = [
+        ['#1B1A14', '#F6790A', '#F0E4D0', '#D9A24B'],
+        ['#0E3D4D', '#1EA7A5', '#F2D3A4', '#F26C2C'],
+        ['#15172B', '#E8E4D6', '#FF531C', '#5560E8'],
+        ['#1B3B2E', '#4D6B4F', '#C7A15A', '#F5F1E8'],
+        ['#0D1B2A', '#415A6B', '#C9A227', '#E6E2D6'],
+        ['#2F2A21', '#7E8B6F', '#F3EDDF', '#B2502E']
+      ];
+      var wordmark = document.getElementById('live-wordmark');
+      var initial = document.getElementById('live-initial');
+      var kitno = document.getElementById('live-kitno');
+      var claim = document.getElementById('live-claim');
+      var chips = document.querySelectorAll('#live-chips .chip');
+      function hash(s) { var h = 0; for (var i = 0; i < s.length; i++) { h = (h * 31 + s.charCodeAt(i)) >>> 0; } return h; }
+      function sketch() {
+        var v = input.value.trim();
+        var name = v || 'Your Brand';
+        wordmark.textContent = name.length > 22 ? name.slice(0, 22) + '\u2026' : name;
+        initial.textContent = name.charAt(0).toUpperCase();
+        var h = hash(name.toLowerCase());
+        kitno.textContent = 'Brand kit \u2014 No. ' + String(1000 + (h % 9000));
+        var pal = palettes[h % palettes.length];
+        chips.forEach(function (chip, i) {
+          chip.style.background = pal[i];
+          chip.setAttribute('data-hex', pal[i]);
+          var tip = chip.querySelector('.tip');
+          if (tip) tip.textContent = pal[i];
+        });
+        claim.href = target();
+      }
+      input.addEventListener('input', sketch);
+      sketch();
     })();
 
     // Respect reduced motion: hold all background videos on their poster frames

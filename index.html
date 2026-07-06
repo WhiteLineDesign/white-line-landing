@@ -225,24 +225,6 @@
     .step-title { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 18px; margin-bottom: 8px; }
     .step-desc { font-size: 14px; color: var(--ink-soft); }
 
-    /* ── BEFORE / AFTER SLIDER ── */
-    .ba-wrap { max-width: 980px; margin: 0 auto; position: relative; padding: 16px; }
-    .ba { position: relative; aspect-ratio: 16 / 9; border: 1px solid var(--edge); border-radius: var(--radius); overflow: hidden; touch-action: none; cursor: ew-resize; background: #FBFAF4; }
-    .ba-after { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3.2%; background: #FBFAF4; padding: 4%; }
-    .ba-after img { height: 52%; width: auto; }
-    .ba-after .ba-word { font-size: clamp(20px, 3.4vw, 40px); text-transform: uppercase; color: #4E4B43; line-height: 1; }
-    .ba-after .ba-chips { display: flex; gap: 8px; }
-    .ba-after .ba-chip { width: 40px; height: 26px; border: 1px solid #1B1A14; border-radius: 2px; }
-    .ba-after .ba-formats { font-size: 11px; letter-spacing: 0.12em; color: #777464; }
-    .ba-before { position: absolute; inset: 0; clip-path: inset(0 50% 0 0); }
-    .ba-before img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .ba-handle { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: var(--blue); transform: translateX(-1px); }
-    .ba-grip { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 44px; height: 44px; border-radius: 50%; background: var(--blue); color: #0B0A08; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 600; box-shadow: 0 6px 22px rgba(0,0,0,0.45); user-select: none; }
-    .ba:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
-    .ba-tag { position: absolute; top: 12px; font-size: 10px; letter-spacing: 0.1em; padding: 5px 10px; border-radius: 2px; pointer-events: none; }
-    .ba-tag.l { left: 12px; background: #1B1A14D9; color: #F2EFE3; }
-    .ba-tag.r { right: 12px; background: #F6790A; color: #0B0A08; }
-
     /* ── SAMPLE KITS ── */
     .kits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .kit { background: var(--sheet); border: 1px solid var(--edge); border-radius: var(--radius); padding: 26px 24px 20px; position: relative; transition: transform 0.18s, box-shadow 0.18s; }
@@ -573,39 +555,6 @@
         <div class="step-num mono">Step 04</div>
         <div class="step-title">Stay consistent forever</div>
         <div class="step-desc">Every future asset pulls from your Vault. No more hunting for the right logo file.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BEFORE / AFTER -->
-  <section class="section" id="upgrade">
-    <div class="section-head">
-      <svg class="reg"><use href="#regmark"/></svg>
-      <span class="mono">The upgrade</span>
-      <span class="rule"></span>
-    </div>
-    <h2 class="h2 display">From 2019 PNG.<br><span class="b">To brand kit.</span></h2>
-    <p class="sub">Every small business has the file — pixelated, white-boxed, emailed to itself for years. Drag the line to see what it becomes.</p>
-    <div class="ba-wrap">
-      <span class="cm tl"></span><span class="cm tr"></span><span class="cm bl"></span><span class="cm br"></span>
-      <div class="ba" id="ba" role="slider" tabindex="0" aria-label="Before and after comparison — drag or use arrow keys" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-        <div class="ba-after">
-          <img src="kit-smoke-salt.webp" alt="" />
-          <div class="ba-word display">Smoke &amp; Salt</div>
-          <div class="ba-chips" aria-hidden="true">
-            <span class="ba-chip" style="background:#1A0E08"></span>
-            <span class="ba-chip" style="background:#82200B"></span>
-            <span class="ba-chip" style="background:#D06A28"></span>
-            <span class="ba-chip" style="background:#C09B7F"></span>
-          </div>
-          <div class="ba-formats mono">PNG &middot; SVG &middot; PDF &middot; EPS &middot; WebP</div>
-        </div>
-        <div class="ba-before" id="ba-before">
-          <img src="ba-before.jpg" alt="A pixelated, low-quality version of the same logo with default-font text" />
-        </div>
-        <div class="ba-handle" id="ba-handle"><div class="ba-grip">&harr;</div></div>
-        <span class="ba-tag mono l">old-logo-final-v2(1).png</span>
-        <span class="ba-tag mono r">White Line kit</span>
       </div>
     </div>
   </section>
@@ -986,34 +935,6 @@
       }
       input.addEventListener('input', sketch);
       sketch();
-    })();
-
-    // Before/after slider
-    (function () {
-      var ba = document.getElementById('ba');
-      if (!ba) return;
-      var before = document.getElementById('ba-before');
-      var handle = document.getElementById('ba-handle');
-      var pos = 50;
-      function set(p) {
-        pos = Math.max(3, Math.min(97, p));
-        before.style.clipPath = 'inset(0 ' + (100 - pos) + '% 0 0)';
-        handle.style.left = pos + '%';
-        ba.setAttribute('aria-valuenow', Math.round(pos));
-      }
-      function fromEvent(e) {
-        var r = ba.getBoundingClientRect();
-        set(((e.clientX - r.left) / r.width) * 100);
-      }
-      var dragging = false;
-      ba.addEventListener('pointerdown', function (e) { dragging = true; ba.setPointerCapture(e.pointerId); fromEvent(e); });
-      ba.addEventListener('pointermove', function (e) { if (dragging) fromEvent(e); });
-      ba.addEventListener('pointerup', function () { dragging = false; });
-      ba.addEventListener('keydown', function (e) {
-        if (e.key === 'ArrowLeft') { set(pos - 4); e.preventDefault(); }
-        if (e.key === 'ArrowRight') { set(pos + 4); e.preventDefault(); }
-      });
-      set(50);
     })();
 
     // Respect reduced motion: hold all background videos on their poster frames

@@ -572,7 +572,7 @@
       <div class="kit">
         <div class="kit-no"><span class="mono">Kit No. 0031</span><span class="mono">Pizza truck</span></div>
         <div class="kit-name display">Pyramid<br>Pizza</div>
-        <div class="kit-vibe">In crust we trust — Buisness cards, Box stamp, Menu</div>
+        <div class="kit-vibe">In crust we trust — badge, box stamp, and menu board in one pass</div>
         <div class="kit-logo filled"><img src="kit-pyramid.webp" alt="Pyramid Pizza logo — an all-seeing-eye pyramid badge reading in crust we trust" loading="lazy" /></div>
         <div class="kit-files mono">PNG &middot; SVG &middot; PDF &middot; EPS &middot; WebP</div>
         <div class="kit-type">
@@ -585,7 +585,7 @@
       <div class="kit">
         <div class="kit-no"><span class="mono">Kit No. 0018</span><span class="mono">Etsy shop</span></div>
         <div class="kit-name display">Loose<br>Thread</div>
-        <div class="kit-vibe">Hand-embroidery studio — Packaging, Thank-you cards, and Shop banner</div>
+        <div class="kit-vibe">Hand-embroidery studio — packaging, thank-you cards, and shop banner in one pass</div>
         <div class="kit-logo filled"><img src="kit-loose-thread.webp" alt="Loose Thread logo — embroidered lettering inside a hoop wreathed in blue florals" loading="lazy" /></div>
         <div class="kit-files mono">PNG &middot; SVG &middot; PDF &middot; EPS &middot; WebP</div>
         <div class="kit-type">
@@ -598,7 +598,7 @@
       <div class="kit">
         <div class="kit-no"><span class="mono">Kit No. 0047</span><span class="mono">Food truck</span></div>
         <div class="kit-name display">Smoke<br>&amp; Salt</div>
-        <div class="kit-vibe">Texas-style barbecue truck — Menu board to Truck wrap</div>
+        <div class="kit-vibe">Texas-style barbecue truck — menu board to truck wrap in one pass</div>
         <div class="kit-logo filled"><img src="kit-smoke-salt.webp" alt="Smoke &amp; Salt logo — a pig roasting on a spit in front of a Texas barbecue truck" loading="lazy" /></div>
         <div class="kit-files mono">PNG &middot; SVG &middot; PDF &middot; EPS &middot; WebP</div>
         <div class="kit-type">
@@ -629,8 +629,8 @@
   <!-- BRAND VAULT -->
   <section class="section" id="vault">
     <div class="bg-video" aria-hidden="true">
-      <video autoplay muted loop playsinline preload="metadata" poster="vault-poster.jpg">
-        <source src="vault-bg.mp4" type="video/mp4" />
+      <video id="vault-vid" muted loop playsinline preload="none" poster="vault-poster.jpg">
+        <source data-src="vault-bg.mp4" type="video/mp4" />
       </video>
     </div>
     <div class="section-head">
@@ -935,6 +935,32 @@
       }
       input.addEventListener('input', sketch);
       sketch();
+    })();
+
+    // Lazy-load the Brand Vault background video when it nears the viewport
+    (function () {
+      var vid = document.getElementById('vault-vid');
+      if (!vid) return;
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function activate() {
+        var s = vid.querySelector('source[data-src]');
+        if (s) {
+          s.src = s.getAttribute('data-src');
+          s.removeAttribute('data-src');
+          vid.load();
+        }
+        if (!reduced) {
+          var p = vid.play();
+          if (p && p.catch) p.catch(function () {});
+        }
+      }
+      if (!('IntersectionObserver' in window)) { activate(); return; }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { activate(); io.disconnect(); }
+        });
+      }, { rootMargin: '600px 0px' });
+      io.observe(vid);
     })();
 
     // Respect reduced motion: hold all background videos on their poster frames

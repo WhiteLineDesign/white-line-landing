@@ -315,13 +315,11 @@
     .success-msg { display: none; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: var(--blue); margin-top: 16px; }
 
     /* ── FOOTER ── */
-    footer { background: #070605; border-top: 1px solid var(--line); color: #8D897A; padding: 24px 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
-    .footer-logo { display: flex; align-items: center; gap: 10px; color: var(--ink); font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 15px; }
-    .footer-links { display: flex; gap: 22px; list-style: none; }
-    .footer-links a { font-size: 13px; color: #A9A697; text-decoration: none; transition: color 0.15s; }
-    .footer-links a:hover { color: var(--ink); }
-    .footer-note { font-size: 13px; }
-
+    .footer-social { display: flex; gap: 14px; align-items: center; }
+    .footer-social a { color: #A9A697; display: inline-flex; transition: color 0.15s; }
+    .footer-social a:hover { color: var(--blue); }
+    .footer-social svg { width: 17px; height: 17px; display: block; }
+   
     /* ── MOTION SAFETY ── */
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
